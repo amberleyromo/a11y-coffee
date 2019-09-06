@@ -1,0 +1,115 @@
+---
+title: Intro
+---
+
+import { SEO } from ".."
+
+<SEO
+  title="Introduction to Web Accessibility"
+  description="An intro to what web accessibility is, why it's important, and the guiding principles behind accessibility standards."
+/>
+
+# Introduction to Web Accessibility
+
+An introduction to web accessibility, the "a11y" numeronym, the case for web accessibility, and the four guiding principles of web accessibility.
+
+## What is web accessibility?
+
+Web accessibility means that websites, tools, and technologies are designed and developed so that people with disabilities can use them.[^intro-to-a11y] People can perceive, understand, navigate, and interact with the Web, and contribute to the Web.
+
+## What is "a11y"?
+
+"A11Y" is a shortening of the word “accessibility”.[^a11y-project-numeronym] "a11y" is a numeronym. A numeronym is a number-based word. "Accessibility" becomes "a11y" by taking the first and last letters of the word, "a" and "y", and counting the remaining letters in between. In this case, there are 11 letters between "a" and "y", so it becomes "a11y". Another example of this is "i18n" (internationalization).
+
+It's often joked that the "a11y" numeronym is not accessible. It's not immediately understood, without explanation. So why use it?
+
+- It's shorter. Social media platforms like Twitter have character limits. "A11Y" uses nine fewer characters than "accessibility".
+- It's discoverable. The "a11y" numeronym is most often used in the context of "web accessibility". Because the word "accessibility" is used in so many other contexts, searching with "a11y" rather than "accessibility" will yield more relevant search results on web accessibility.
+
+## Why is web accessibility important?
+
+Web accessibility is a basic human right, it increases business potential, and it's increasingly required by law.[^a11y-business-case]
+
+### Web accessibility is a basic human right
+
+The Web is an increasingly important resource in many aspects of life: education, employment, government, commerce, health care, recreation, and more. It is essential that the Web be accessible in order to provide equal access and equal opportunity to people with diverse abilities. Access to information and communications technologies, including the Web, is defined as a basic human right in the [United Nations Convention on the Rights of Persons with Disabilities](https://www.un.org/development/desa/disabilities/convention-on-the-rights-of-persons-with-disabilities.html) (UN CRPD).
+
+Accessibility supports social inclusion for people with disabilities as well as others, such as:
+
+- older people
+- people in rural areas
+- people in developing countries
+
+### Web accessibility increases business potential
+
+Accessible websites provide an improved user experience for everyone. A user with a positive experience navigating your website will be more likely to convert, whether that's signing up for a newsletter, buying a product, etc.
+
+Web accessibility widens your overall potential customer base. Why would you choose to alienate potential customers?
+
+### Web accessibility is increasingly required by law
+
+Across the world, countries are increasingly legislating protections for equal access to the web. This is a quickly-changing landscape. Building with accessibility in mind minimizes the risk in the current and future legal landscape.
+
+## The Web Content Accessibility Guidelines (WCAG)
+
+The Web Content Accessibility Guidelines (WCAG) is produced and maintained by the W3C in cooperation with individuals and organizations around the world. The goal of WCAG is to provide a single shared standard for web accessibility.
+
+### The Four Guiding Principles of Accessibility
+
+The current version of WCAG is 2.1. WCAG version 1.0 focused heavily on techniques and checkpoints for achieving web accessibility. The version 2 update focuses instead on four main guiding principles of accessibility. Those four principles are perceivable, operable, understandable, and robust (POUR)[^webaim-pour].
+
+> _The following sections on POUR are sourced nearly verbatim from Carie Fisher's tweet thread on POUR[^tweet-thread-pour] (with minimal tweaks). Thank you Carie for that breakdown!_
+
+#### Perceivable
+
+Users must be able to perceive the information being presented – it cannot be imperceptible to all of their senses.
+
+- Questions to consider
+  - Is there anything on our website or app that a person with a disability would not be able to perceive?
+  - Does this work with different types of assistive technology devices? Make sure to think of all the different types of disabilities.
+- Examples
+  - Adding text alternatives to non-decorative images.
+  - Adding captions and transcripts to videos.
+  - Making sure the color is not the only method to convey meaning.
+
+#### Operable
+
+Users must be able to operate the interface – the interface cannot require interaction that a user cannot perform.
+
+- Questions to consider
+  - Can users control interactive elements of our website/app?
+  - Does our website have any keyboard traps? Does it work for mobile and touch devices?
+- Examples
+  - Using keyboard only navigation.
+  - Making sure slideshows and media players have all of the controls shown.
+  - Making sure users have enough time to fill out a form.
+
+#### Understandable
+
+Users must be able to understand the information as well as the operation of the user interface – the content or operation cannot be beyond their understanding.
+
+- Questions to consider
+  - Is all of the content clearly written?
+  - Are all of the interactions easy to understand?
+  - Does the order of the page make sense?
+- Examples
+  - Write content at a 9th-grade reading level – don’t use a scrabble word when a simpler word will do.
+  - Make sure your website is predictable.
+  - Make sure any error messages on your website are clear and easy to resolve.
+
+#### Robust
+
+Users must be able to access content as technologies advance – as technologies and user agents evolve, the content should remain accessible.
+
+- Questions to consider
+  - Does our website only support the newest browsers or operating systems?
+  - Is our website developed with best practices?
+  - Does this work in both landscape and portrait orientations?
+- Examples
+  - There are no real examples of this. Make sure to test your website/app as it evolves. After initial testing, test again when new features or functionality are added. Consider a11y an on-going maintenance task.
+
+[^intro-to-a11y]: W3C: [What is Accessibility](https://www.w3.org/WAI/fundamentals/accessibility-intro/#what)
+[^a11y-project-numeronym]: A11Y Project: [What does the term A11Y mean?](https://a11yproject.com/about/)
+[^a11y-business-case]: W3C: [The Business Case for Digital Accessibility](https://www.w3.org/WAI/business-case/)
+[^webaim-pour]: WebAIM: [Focusing on the principles of accessibility](https://webaim.org/articles/pour/#principles)
+[^tweet-thread-pour]: Carie Fisher: [tweet thread on POUR](https://threadreaderapp.com/thread/1130825247320489987.html)

@@ -1,0 +1,202 @@
+---
+title: Quick Wins
+---
+
+import { Flex } from "theme-ui"
+import { ColorContrast, ImageGallery, SEO } from ".."
+
+<SEO
+  title="Quick Wins for Web Accessibility"
+  description="An introduction to the six most common accessibility errors, and how to fix them."
+/>
+
+# Quick Wins for Web Accessibility
+
+In 2019, the [WebAIM project](https://webaim.org/) began conducting an [accessibility evaluation of the home pages of the top 1,000,000 websites](https://webaim.org/projects/million/). They used an [automated testing tool called WAVE](https://wave.webaim.org/). 97.8% of home pages were found to have _detectable_ WCAG 2 failures.
+
+> Note that only around 25% of possible WCAG conformance failures can be detected with automated testing.[^webaim-million] Absence of detectable errors using automated testing does not mean that a site is accessible or compliant.
+
+Web accessibility is wide-ranging and nuanced, but you can make a huge and immediate impact by correcting the most common errors identified in the study.
+
+## Table of Contents
+
+- [Most Common Web Accessibility Errors](/quick-wins/#most-common-web-accessibility-errors)
+  - [Low contrast](/quick-wins/#low-contrast)
+  - [Missing alt text for images](/quick-wins/#missing-alt-text-for-images)
+  - [Empty links](/quick-wins/#empty-links)
+  - [Missing form input labels](/quick-wins/#missing-form-input-labels)
+  - [Missing document language](/quick-wins/#missing-document-language)
+  - [Empty Buttons](/quick-wins/#empty-buttons)
+- [Sources](/quick-wins/#sources)
+
+## Most Common Web Accessibility Errors
+
+### Low contrast
+
+Users must be able to _perceive_ content on the page. A sufficient contrast ratio supports that perception. Ensure that you're using sufficient color contrast.
+
+In WCAG, contrast is measured with "[relative luminance](https://www.w3.org/TR/WCAG21/#dfn-relative-luminance)", or the brightness between two colors.[^webaim-contrast] This brightness difference is expressed as a ratio ranging from 1:1 (white text on a white background) to 21:1 (black text on a white background). (The second example shown is intentionally illegible -- it's white text on a white background, with a contrast ratio of 1:1.)
+
+<ImageGallery>
+
+<ColorContrast background="#fff" foreground="#000" ratio="21:1" />
+
+<ColorContrast background="#fff" foreground="#fff" ratio="1:1" />
+
+</ImageGallery>
+
+WCAG defines two levels of compliance for color contrast for both regular text and large text.
+
+#### Regular text
+
+Regular [text](https://www.w3.org/TR/WCAG21/#dfn-text) and [images of text](https://www.w3.org/TR/WCAG21/#dfn-images-of-text) must meet a contrast ratio of at least 4.5:1. The more stringent requirement requires at least 7:1.
+
+<ImageGallery>
+
+<ColorContrast
+  background="#ccc"
+  foreground="#565656"
+  ratio="4.6:1"
+  fontSize="1"
+/>
+
+<ColorContrast
+  background="#ccc"
+  foreground="#393939"
+  ratio="7.19:1"
+  fontSize="1"
+/>
+
+</ImageGallery>
+
+#### Large text
+
+[Large-scale text](https://www.w3.org/TR/WCAG21/#dfn-large-scale) and images of large-scale text must meet a contrast ratio of at least 3:1. The more stringent requirement requires at least 4.5:1.
+
+<ImageGallery>
+
+<ColorContrast
+  background="#ccc"
+  foreground="#707070"
+  ratio="3.08:1"
+  fontSize="4"
+/>
+
+<ColorContrast
+  background="#ccc"
+  foreground="#565656"
+  ratio="4.6:1"
+  fontSize="4"
+/>
+
+</ImageGallery>
+
+**Solution:** Ensure [text elements have sufficient color contrast against the background](https://dequeuniversity.com/rules/axe/3.3/color-contrast).
+
+### Missing alt text for images
+
+Missing alt text for images is the second most common culprit. When using an image, ensure that you provide the `alt` attribute and descriptive text, to provide a text alternative to the image.
+
+```
+<img src="https://images.unsplash.com/photo-1507146426996-ef05306b995a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80" />
+```
+
+Without being able to see the image referenced above, and without alternative text provided, you have no way of discerning what that image is.
+
+```
+<img src="..." alt="short-coated brown puppy facing right side, background blurred and indistinct" />
+```
+
+With the alt attribute and sufficient descriptive text, you can discern the content of the photo without having seen the image. (_Image link shortened for brevity._)
+
+**Solution:** Ensure [images have alternative text](https://dequeuniversity.com/rules/axe/3.3/image-alt).
+
+### Empty links
+
+If a link contains no text, the function or purpose of the link will be imperceptible to some users. This happens when an anchor element has an href attribute but contains no text, or a linked image has no alternative text.
+
+This example pulled from the Washington Post shows a common example:
+
+```
+<a href="http://www.twitter.com/intent/user?screen_name=washingtonpost" class="homepage-footer-button middle">
+    <span class="fa fa-twitter"></span>
+</a>
+```
+
+The preceding markup results in a "Twitter" social icon that links out to Twitter, but lacks link text to communicate the purpose of the link non-visually.
+
+**Solution:** Ensure [links have discernible text](https://dequeuniversity.com/rules/axe/3.3/link-name).
+
+### Missing form input labels
+
+Missing form input labels can make it difficult or impossible for users to submit forms.
+
+#### Example with form input labels missing
+
+The following form example is modified from the University of Washington's ["Accessible University" fictional homepage](https://www.washington.edu/accesscomputing/AU/before.html). In this example, the text "Name" is near the intended input area. That relationship will be apparent to most sighted users, but not so for others. If the proper markup is not present, screen readers have to guess which labels are associated with each field.
+
+```
+<form action="#" method="post">
+
+    <div class="required">
+        Name:
+        <input type="text" name="name"/>
+    </div>
+
+    <div>
+        <input id="submit" type="submit" name="submit" value="Submit" />
+    </div>
+
+</form>
+```
+
+#### Fixed example with form input labels
+
+To explicitly associate labels with form fields, each label must be marked up with the HTML `<label>` element. The `<label>` element has a `for` attribute whose value matches the `id` attribute of the associated form field.
+
+```
+<form action="after.html?submitted=yes" method="post">
+
+    <div class="required">
+        <label for="email">Email: (required)</label>
+        <input id="email" type="email" name="email" required/>
+    </div>
+
+    <div>
+        <input id="submit" type="submit" name="submit" value="Submit" />
+    </div>
+
+</form>
+```
+
+**Solution:** Ensure [form `<input>` elements have labels](https://dequeuniversity.com/rules/axe/3.3/label).
+
+### Missing document language
+
+Screen reader users select a default language. If the language of a page is not specified, the screen reader defaults to the user's selected default language. For multi-lingual users, this can result in strange behavior.
+
+For example, suppose someone navigates the web in both Spanish and English, and their default language is set to Spanish. If a website doesn't identify the language of the content, and the content is in English, the user's screen reader will read aloud the English content with the user's default voice designed for Spanish content.
+
+Ensure that you identify a language in the opening `<html>` element:
+
+```
+<html lang="es">
+  <!--document head and body-->
+</html>
+```
+
+**Solution:** Ensure [`<html>` element has a `lang` attribute](https://dequeuniversity.com/rules/axe/3.3/html-has-lang).
+
+### Empty buttons
+
+Screen reader users won't be able to discern the purpose of a button that has no accessible name. Buttons must have discernable text that clearly describes the destination, purpose, function, or action for screen reader users.
+
+Screen reader users are not able to discern the purpose of button that has no accessible name.
+
+**Solution:** Ensure [`<button>` elements have discernible text](https://dequeuniversity.com/rules/axe/3.3/button-name).
+
+[^webaim-million]: The [WebAIM million study](https://webaim.org/projects/million/) cites this figure.
+[^webaim-contrast]: WebAIM: [Article on contrast](https://webaim.org/articles/contrast/)
+
+- Deque University's [list of axe rules](https://dequeuniversity.com/rules/axe/3.3)
+- Lindsey Kopacz's [Design Tips - Color and Accessibility](https://www.a11ywithlindsey.com/blog/design-tips-color-accessibility)

@@ -1,0 +1,45 @@
+import { Banner, Tiles, SEO } from ".."
+import CoffeeIcons from "../components/coffee-icons"
+import { Container } from "theme-ui"
+
+<SEO title="Homepage" />
+
+<Banner>
+
+A11y Coffee <span role="img" aria-label="coffee cup emoji">☕️</span>
+
+# Pick your serving size of web accessibility information
+
+</Banner>
+
+<Container>
+
+<Tiles columns={4}>
+
+1. <CoffeeIcons type="espresso" />
+
+   ## [Introduction](/intro/)
+
+   What is web accessibility and why is it important?
+
+2. <CoffeeIcons type="cup" />
+
+   ## [Quick Wins](/quick-wins/)
+
+   As a web developer, how can I make an impact quickly?
+
+3. <CoffeeIcons type="mug" />
+
+   ## [Start Testing](/start-testing/)
+
+   How do I test for accessibility in the browser?
+
+4. <CoffeeIcons type="kettle" />
+
+   ## [Dig in](/dig-in/)
+
+   We've just scratched the surface. Dig in and learn more.
+
+</Tiles>
+
+</Container>
