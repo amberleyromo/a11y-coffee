@@ -61,7 +61,7 @@ export default {
     heading: "inherit",
     monospace: "Menlo, monospace",
   },
-  fontSizes: [12, 14, 16, 20, 24, 32, 48, 64, 72],
+  fontSizes: [16, 18, 20, 22, 24, 32, 48, 64, 72],
   fontWeights: {
     body: 400,
     heading: 800,
@@ -108,6 +108,15 @@ export default {
     img: {
       maxWidth: "100%",
       height: "auto",
+    },
+    p: {
+      fontSize: 2,
+    },
+    li: {
+      fontSize: 2,
+    },
+    ol: {
+      fontSize: 2,
     },
     h1: {
       variant: "text.display",

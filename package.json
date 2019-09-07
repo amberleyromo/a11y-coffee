@@ -1,7 +1,7 @@
 {
-  "name": "gatsby-starter-hello-world",
+  "name": "a11y-coffee",
   "private": true,
-  "description": "A simplified bare-bones starter for Gatsby",
+  "description": "The introduction on web accessibility that I want to give every single web developer.",
   "version": "0.1.0",
   "license": "MIT",
   "scripts": {

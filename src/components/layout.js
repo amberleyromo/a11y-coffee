@@ -37,7 +37,7 @@ export default props => {
               pt: 0,
               pb: 5,
               px: props.fullwidth ? 0 : 3,
-              maxWidth: props.fullwidth ? "none" : "",
+              maxWidth: props.fullwidth ? "none" : 800,
             }}
           >
             <div
