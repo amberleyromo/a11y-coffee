@@ -11,25 +11,24 @@ import { SEO } from "../../"
 
 # Start Testing for Web Accessibility
 
+## Summary
+
 A light introduction to a variety of in-browser testing tools. Run some audits over a mug of coffee (or whatever). You will learn _a ton_ by learning about and addressing errors.
 
 > Highly recommend running audits with each tool as you read, to experiment with them. A great page to run tests on is "[Accessible University](https://www.washington.edu/accesscomputing/AU/before.html)", a fictional university homepage intentionally designed to show accessibility errors.
 
 ## Table of Contents
 
-- Testing Tools
-  - [Lighthouse](/start-testing/#lighthouse)
-  - [WAVE](/start-testing/#wave)
-  - [Axe](/start-testing/#axe)
-  - [Accessibility Insights](/start-testing/#accessibility-insights)
+- [Lighthouse](/start-testing/#lighthouse)
+- [WAVE](/start-testing/#wave)
+- [Axe](/start-testing/#axe)
+- [Accessibility Insights](/start-testing/#accessibility-insights)
 
-## Testing Tools
-
-### Lighthouse
+## Lighthouse
 
 [Google's Lighthouse tool](https://developers.google.com/web/tools/lighthouse/) is an open-source, automated tool for measuring web pages.
 
-#### Testing with Lighthouse
+### Testing with Lighthouse
 
 You can run Lighthouse in the browser (without installing anything), in Chrome DevTools (if you're using Chrome) or from the command line:
 
@@ -39,7 +38,7 @@ You can run Lighthouse in the browser (without installing anything), in Chrome D
 
 > Note: There are other ways to run Lighthouse, but these options are the easiest to get started with.
 
-#### Interpreting Lighthouse Results
+### Interpreting Lighthouse Results
 
 The audit will return a numerical score for four categories: Performance, accessibility, best practices, and SEO.
 
@@ -49,18 +48,18 @@ The audit will also return a listing of flagged violations and warnings, sortabl
 
 Each flagged item links directly to a resource where you can learn how to fix the item. Going one-by-one through these items is a great way to learn.
 
-### WAVE
+## WAVE
 
 The [WAVE Web Accessibility Evaluation Tool](https://wave.webaim.org/) is developed and made available as a free community service by [WebAIM](http://webaim.org/). With the WAVE tool, you can evaluate accessibility feedback directly in the context of the page.
 
-#### Testing with WAVE
+### Testing with WAVE
 
 Like with Lighthouse, you have several options for running WAVE; The easiest options are to run it in the browser (no need to install), or to run it via a browser extension.
 
 - Run an audit on a web page from the [WAVE homepage](https://wave.webaim.org/).
 - Install a [WAVE browser extension](https://wave.webaim.org/extension/) (Chrome and Firefox available).
 
-#### Interpreting WAVE results
+### Interpreting WAVE results
 
 WAVE will overlay the web page with embedded icons and indicators that present in-context feedback about the accessibility of elements on the page. WAVE also presents a sidebar with a report section with tab views:[^wave-help]
 
@@ -69,7 +68,7 @@ WAVE will overlay the web page with embedded icons and indicators that present i
 - **Documentation**: Explanation of the WAVE icons and how you can make your page more accessible.
 - **Outline**: The heading structure of the page.
 
-#### WAVE Views
+### WAVE Views
 
 WAVE displays accessibility information in three views:[^wave-help]
 
@@ -77,11 +76,11 @@ WAVE displays accessibility information in three views:[^wave-help]
 - **No Styles**: Presents the page with styles disabled with embedded accessibility icons and indicators. This view is great for reviewing the underlying reading and navigation order of the page.
 - **Contrast**: Shows only the contrast issues found on your page.
 
-### Axe
+## Axe
 
 [Axe](https://www.deque.com/axe/) is an accessibility testing engine for websites and other HTML-based user interfaces.[^axe-core-readme] It's an open-source product of [Deque](https://www.deque.com/), a digital accessibility company.
 
-#### Testing with Axe
+### Testing with Axe
 
 There are a variety of ways to test with the Axe library. The easiest way to test a web page in the browser is with the Axe browser extension (available for [Chrome](http://bitly.com/aXe-Chrome) and [Firefox](http://bit.ly/axe-Firefox)).
 
@@ -94,7 +93,7 @@ There are just a few steps to testing with the Axe extension:
    - In Firefox the tab is named “Accessibility” or “axe Accessibility Audit.”
 5. Hit the big “Analyze” button.
 
-#### Interpreting Axe Results
+### Interpreting Axe Results
 
 After analysis is complete, the Axe pane shows a list of accessibility issues it identified, as well as how many times the issue was found to occur on the page. Clicking an issue shows more detail, including:
 
@@ -105,22 +104,22 @@ After analysis is complete, the Axe pane shows a list of accessibility issues it
 
 You can select "Inspect node" to inspect (in the "Elements" tab of your dev tools) the code related the issue. You can turn on "Highlight", which will visually outline the UI generated by the code related to the issue.
 
-### Accessibility Insights
+## Accessibility Insights
 
 [Accessibility Insights](https://accessibilityinsights.io/) is a set of free testing tools from Microsoft. It uses axe-core under the hood. The suite of testing tools currently includes browser extensions for Chrome and Edge Insider, as well as an application for testing Windows applications. We'll continue to focus on browser testing here, and talk about [Accessibility Insights for Web](https://accessibilityinsights.io/docs/en/web/overview) (the browser extensions).
 
-#### Testing with Accessibility Insights
+### Testing with Accessibility Insights
 
 Accessibility Insights for Web supports two primary workflows: FastPass and Assessment.
 
-##### FastPass
+#### FastPass
 
 The "FastPass" workflow is a two-step process that helps quickly identify common, high-impact accessibility issues.
 
 1. Automated checks: It automatically scans for compliance with approximately 50 accessibility requirements.
 2. Tab stops: It provides clear instructions and a visual helper to assist in identifying critical accessibility issues related to keyboard access, such as missing tab stops, keyboard traps, and incorrect tab order.
 
-##### Assessment
+#### Assessment
 
 The "Assessment" workflow assists in verifying that a web app or web site is compliant with Web Content Accessibility Guidelines (WCAG) 2.0 Level AA, through a combination of automated and manual tests (many of which are guided).
 
