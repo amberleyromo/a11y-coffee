@@ -5,7 +5,7 @@ import { Global } from "@emotion/core"
 
 import SkipLink from "./skip-link"
 import Header from "./header"
-// import Footer from './footer'
+import Footer from "./footer"
 // import Sidebar from './sidebar'
 // import Pagination from './pagination'
 // import EditLink from './edit-link'
@@ -59,6 +59,7 @@ export default props => {
             </div>
           </Container>
         </Main>
+        <Footer />
       </Layout>
     </Styled.root>
   )
