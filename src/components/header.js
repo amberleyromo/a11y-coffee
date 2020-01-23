@@ -4,7 +4,7 @@ import NavLink from "./nav-link"
 import Button from "./button"
 
 const modes = ["swiss", "gatsby", "dark", "deep"]
-
+// trigger change
 export default () => {
   const [mode, setMode] = useColorMode()
 
