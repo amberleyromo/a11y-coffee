@@ -3,7 +3,7 @@ title: Quick Wins
 ---
 
 import { Flex } from "theme-ui"
-import { ColorContrast, ImageGallery, SEO } from ".."
+import { ColorContrast, ImageGallery, SEO, Callout } from ".."
 
 <SEO
   title="Quick Wins for Web Accessibility"
@@ -38,7 +38,7 @@ Users must be able to _perceive_ content on the page. A sufficient contrast rati
 
 In WCAG, contrast is measured using "relative luminance". Relative luminance is the brightness between two colors.[^webaim-contrast] Relative luminance is expressed as a ratio ranging from 1:1 (white text on a white background) to 21:1 (black text on a white background).
 
-> _The second example shown is deliberately illegible. It shows white text on a white background, illustrating a contrast ratio of 1:1._
+> _The second example shown is deliberately a contrast error. It shows white text on a white background, illustrating a contrast ratio of 1:1._
 
 <ImageGallery>
 
@@ -94,7 +94,11 @@ WCAG defines two levels of compliance for color contrast.
 
 </ImageGallery>
 
+<Callout>
+
 **Solution:** Ensure [text elements have sufficient color contrast against the background](https://dequeuniversity.com/rules/axe/3.3/color-contrast).
+
+</Callout>
 
 ### Missing alt text for images
 
@@ -112,7 +116,11 @@ This example image element above is missing an `alt` attribute. If you can't see
 
 With the alt attribute providing sufficient descriptive text, users can discern the content of the photo without having seen the image.
 
+<Callout>
+
 **Solution:** Ensure [images have alternative text](https://dequeuniversity.com/rules/axe/3.3/image-alt).
+
+</Callout>
 
 ### Empty links
 
@@ -128,7 +136,11 @@ This example pulled from the Washington Post's homepage shows a common example:
 
 That markup displays a social icon that links out to Twitter. However, it lacks link text to communicate the purpose of the link non-visually.
 
+<Callout>
+
 **Solution:** Ensure [links have discernible text](https://dequeuniversity.com/rules/axe/3.3/link-name).
+
+</Callout>
 
 ### Missing form input labels
 
@@ -172,7 +184,11 @@ To explicitly associate labels with form fields, labels must be marked up with t
 </form>
 ```
 
+<Callout>
+
 **Solution:** Ensure [form `<input>` elements have labels](https://dequeuniversity.com/rules/axe/3.3/label).
+
+</Callout>
 
 ### Missing document language
 
@@ -188,7 +204,11 @@ Ensure that you identify a language in the opening `<html>` element:
 </html>
 ```
 
+<Callout>
+
 **Solution:** Ensure [`<html>` element has a `lang` attribute](https://dequeuniversity.com/rules/axe/3.3/html-has-lang).
+
+</Callout>
 
 ### Empty buttons
 
@@ -196,7 +216,11 @@ Screen reader users won't be able to discern the purpose of a button that has no
 
 Screen reader users are not able to discern the purpose of button that has no accessible name.
 
+<Callout>
+
 **Solution:** Ensure [`<button>` elements have discernible text](https://dequeuniversity.com/rules/axe/3.3/button-name).
+
+</Callout>
 
 [^webaim-million]: The [WebAIM million study](https://webaim.org/projects/million/) cites this figure.
 [^webaim-contrast]: WebAIM: [Article on contrast](https://webaim.org/articles/contrast/)
