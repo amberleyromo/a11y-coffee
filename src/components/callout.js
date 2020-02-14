@@ -6,11 +6,11 @@ export default ({ children, ...props }) => {
     <div
       {...props}
       sx={{
-        backgroundColor: "muted",
-        marginLeft: "-1.5rem",
-        padding: ".5rem 1.25rem",
-        border: "0.25rem solid",
-        borderColor: "highlight",
+        ml: "-1.5rem",
+        p: ".5rem 1.25rem",
+        color: "text",
+        bg: "muted",
+        border: "2px solid",
       }}
     >
       {children}
