@@ -24,3 +24,4 @@ export default props => (
 )
 
 console.log(`trigger change`)
+console.log(`again`)
