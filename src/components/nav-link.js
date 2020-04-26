@@ -11,9 +11,9 @@ const styles = {
   textDecoration: "none",
   fontSize: 3,
   fontWeight: "bold",
-  // "&.active": {
-  //   color: "secondary",
-  // },
+  "&.active": {
+    color: "secondary",
+  },
   "&:hover": {
     color: "secondary",
   },
