@@ -7,12 +7,15 @@ const styles = {
   display: "block",
   px: 2,
   py: 2,
-  color: "inherit",
+  color: "primary",
   textDecoration: "none",
   fontSize: 3,
   fontWeight: "bold",
-  "&.active": {
-    color: "primary",
+  // "&.active": {
+  //   color: "secondary",
+  // },
+  "&:hover": {
+    color: "secondary",
   },
   "&:focus": {
     outlineWidth: "2px",

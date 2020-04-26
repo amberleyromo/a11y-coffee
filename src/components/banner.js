@@ -37,8 +37,7 @@ export default props => (
           mr: 3,
           mb: 3,
           "&:hover, &:focus": {
-            color: "background",
-            bg: "text",
+            color: "secondary",
           },
         },
       },
