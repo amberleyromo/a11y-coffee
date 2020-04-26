@@ -4,8 +4,10 @@ import NavLink from "./nav-link"
 
 export default props => (
   <Box
+    as="footer"
     sx={{
       py: 3,
+      m: 4,
     }}
   >
     <Box>

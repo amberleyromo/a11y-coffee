@@ -15,7 +15,12 @@ export default () => {
   }
 
   return (
-    <Box>
+    <Box
+      as="header"
+      sx={{
+        p: [3, 4],
+      }}
+    >
       <Box>
         <Flex sx={{ justifyContent: "space-between" }}>
           <Flex sx={{ alignItems: "center" }}>

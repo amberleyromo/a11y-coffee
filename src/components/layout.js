@@ -5,6 +5,7 @@ import { Global } from "@emotion/core"
 
 import SkipLink from "./skip-link"
 import Header from "./header"
+import Main from "./Main"
 import Footer from "./footer"
 // import Sidebar from './sidebar'
 // import Pagination from './pagination'
@@ -14,6 +15,7 @@ import Footer from "./footer"
 export default props => {
   const [menuOpen, setMenuOpen] = useState(false)
   const nav = useRef(null)
+  console.log(`layout props.fullWidth`, props.fullWidth)
 
   return (
     <Styled.root>
@@ -31,34 +33,7 @@ export default props => {
       <SkipLink>Skip to content</SkipLink>
       <Box>
         <Header nav={nav} menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
-        <Box>
-          <Box
-            sx={{
-              pt: 0,
-              pb: 5,
-              px: props.fullwidth ? 0 : 3,
-              maxWidth: props.fullwidth ? "none" : 800,
-            }}
-          >
-            <div
-              sx={{
-                display: ["block", "flex"],
-                mx: props.fullwidth ? 0 : -3,
-              }}
-            >
-              <div
-                id="content"
-                sx={{
-                  width: "100%",
-                  minWidth: 0,
-                  px: props.fullwidth ? 0 : 3,
-                }}
-              >
-                {props.children}
-              </div>
-            </div>
-          </Box>
-        </Box>
+        <Main {...props} />
         <Footer />
       </Box>
     </Styled.root>

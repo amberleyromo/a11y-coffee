@@ -47,7 +47,7 @@ export default props => (
   >
     <div
       sx={{
-        py: [3, 4],
+        p: [3, 4],
         color: "background",
         bg: "primary",
         backgroundImage: gradient,

@@ -32,7 +32,12 @@ export default ({ columns = 3, width, ...props }) => {
         },
       }}
     >
-      <div {...props} />
+      <div
+        sx={{
+          p: [3, 4],
+        }}
+        {...props}
+      />
     </ThemeProvider>
   )
 }
