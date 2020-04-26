@@ -12,10 +12,13 @@ export default props => (
       m: 0,
       px: 2,
       py: 2,
-      color: "text",
+      color: "primary",
       bg: "muted",
       border: 0,
       borderRadius: 2,
+      "&:hover": {
+        color: "secondary",
+      },
       "&:focus": {
         outlineWidth: "2px",
         outlineStyle: "dashed",
