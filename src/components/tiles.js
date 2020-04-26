@@ -34,10 +34,20 @@ export default ({ columns = 3, width, ...props }) => {
     >
       <div
         sx={{
-          p: [3, 4],
+          width: `100%`,
+          p: 4,
         }}
-        {...props}
-      />
+      >
+        <div
+          sx={{
+            m: `auto`,
+            minWidth: 0,
+            maxWidth: 1024,
+            p: 3,
+          }}
+          {...props}
+        />
+      </div>
     </ThemeProvider>
   )
 }

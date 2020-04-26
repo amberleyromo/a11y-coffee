@@ -1,45 +1,19 @@
 /** @jsx jsx */
-import { jsx, Box, Flex } from "theme-ui"
+import { jsx, Box } from "theme-ui"
 
 export default props => {
-  console.log(`props.fullWidth main`, props.fullWidth)
   return (
-    <Flex
-      as="main"
-      sx={{
-        justifyContent: `center`,
-      }}
-    >
+    <main>
       <Box
         sx={{
-          pt: 0,
-          pb: 5,
           px: props.fullWidth ? 0 : 3,
+          py: props.fullWidth ? 0 : 4,
           maxWidth: props.fullWidth ? "none" : 800,
+          m: props.fullWidth ? "inherit" : "auto",
         }}
       >
-        <div
-          sx={
-            {
-              // display: ["block", "flex"],
-              // mx: props.fullWidth ? 0 : -3,
-            }
-          }
-        >
-          <div
-            id="content"
-            sx={
-              {
-                //   width: "100%",
-                //   minWidth: 0,
-                //   px: props.fullWidth ? 0 : 3,
-              }
-            }
-          >
-            {props.children}
-          </div>
-        </div>
+        {props.children}
       </Box>
-    </Flex>
+    </main>
   )
 }

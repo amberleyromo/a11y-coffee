@@ -1,5 +1,5 @@
 /** @jsx jsx */
-import { jsx, Box, Flex, useColorMode } from "theme-ui"
+import { jsx, Flex, useColorMode } from "theme-ui"
 import NavLink from "./nav-link"
 import Button from "./button"
 
@@ -15,36 +15,35 @@ export default () => {
   }
 
   return (
-    <Box
+    <Flex
       as="header"
       sx={{
-        p: [3, 4],
+        justifyContent: "space-between",
+        maxWidth: 1024,
+        m: `auto`,
+        py: 3,
       }}
     >
-      <Box>
-        <Flex sx={{ justifyContent: "space-between" }}>
-          <Flex sx={{ alignItems: "center" }}>
-            <NavLink to="/">
-              A11y Coffee{" "}
-              <span role="img" aria-label="coffee cup emoji">
-                ☕️
-              </span>
-            </NavLink>
-          </Flex>
-          <Flex>
-            {/* <NavLink to="/about/">About</NavLink>
+      <Flex>
+        <NavLink to="/">
+          A11y Coffee{" "}
+          <span role="img" aria-label="coffee cup emoji">
+            ☕️
+          </span>
+        </NavLink>
+      </Flex>
+      <Flex>
+        {/* <NavLink to="/about/">About</NavLink>
             <NavLink href="/friday-a11y/">Friday A11Y</NavLink> */}
-            <Button
-              sx={{
-                ml: 2,
-              }}
-              onClick={cycleMode}
-            >
-              {mode}
-            </Button>
-          </Flex>
-        </Flex>
-      </Box>
-    </Box>
+        <Button
+          sx={{
+            ml: 2,
+          }}
+          onClick={cycleMode}
+        >
+          {mode}
+        </Button>
+      </Flex>
+    </Flex>
   )
 }

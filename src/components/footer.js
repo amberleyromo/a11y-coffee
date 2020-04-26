@@ -1,24 +1,19 @@
 /** @jsx jsx */
-import { jsx, Box } from "theme-ui"
+import { jsx, Flex } from "theme-ui"
 import NavLink from "./nav-link"
 
-export default props => (
-  <Box
+export default () => (
+  <Flex
     as="footer"
     sx={{
+      justifyContent: `flex-end`,
+      m: `auto`,
+      maxWidth: 1024,
       py: 3,
-      m: 4,
     }}
   >
-    <Box>
-      <div sx={{ display: "flex" }}>
-        <div sx={{ mx: "auto" }} />
-        <NavLink to="/about/">About</NavLink>
-        <NavLink href="/credits/">Credits</NavLink>
-        <NavLink href="https://github.com/amberleyromo/a11y-coffee">
-          GitHub
-        </NavLink>
-      </div>
-    </Box>
-  </Box>
+    <NavLink to="/about/">About</NavLink>
+    <NavLink href="/credits/">Credits</NavLink>
+    <NavLink href="https://github.com/amberleyromo/a11y-coffee">GitHub</NavLink>
+  </Flex>
 )

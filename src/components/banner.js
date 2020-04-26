@@ -47,13 +47,14 @@ export default props => (
   >
     <div
       sx={{
-        p: [3, 4],
         color: "background",
         bg: "primary",
         backgroundImage: gradient,
+        width: `100%`,
+        p: 4,
       }}
     >
-      <Box>{props.children}</Box>
+      <Box sx={{ maxWidth: 1024, m: `auto`, p: 3 }}>{props.children}</Box>
     </div>
   </ThemeProvider>
 )
