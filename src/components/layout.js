@@ -1,5 +1,5 @@
 /** @jsx jsx */
-import { jsx, Styled, Layout, Main, Container } from "theme-ui"
+import { jsx, Styled, Box } from "theme-ui"
 import { useState, useRef } from "react"
 import { Global } from "@emotion/core"
 
@@ -29,10 +29,10 @@ export default props => {
         }}
       />
       <SkipLink>Skip to content</SkipLink>
-      <Layout>
+      <Box>
         <Header nav={nav} menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
-        <Main>
-          <Container
+        <Box>
+          <Box
             sx={{
               pt: 0,
               pb: 5,
@@ -57,10 +57,10 @@ export default props => {
                 {props.children}
               </div>
             </div>
-          </Container>
-        </Main>
+          </Box>
+        </Box>
         <Footer />
-      </Layout>
+      </Box>
     </Styled.root>
   )
 }

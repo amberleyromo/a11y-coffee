@@ -1,5 +1,5 @@
 /** @jsx jsx */
-import { jsx, ThemeProvider, Container } from "theme-ui"
+import { jsx, ThemeProvider, Box } from "theme-ui"
 
 const gradient = `linear-gradient(120deg,
   rgba(132, 132, 132, .2),
@@ -53,7 +53,7 @@ export default props => (
         backgroundImage: gradient,
       }}
     >
-      <Container>{props.children}</Container>
+      <Box>{props.children}</Box>
     </div>
   </ThemeProvider>
 )

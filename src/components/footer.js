@@ -1,14 +1,14 @@
 /** @jsx jsx */
-import { jsx, Footer, Container } from "theme-ui"
+import { jsx, Box } from "theme-ui"
 import NavLink from "./nav-link"
 
 export default props => (
-  <Footer
+  <Box
     sx={{
       py: 3,
     }}
   >
-    <Container>
+    <Box>
       <div sx={{ display: "flex" }}>
         <div sx={{ mx: "auto" }} />
         <NavLink to="/about/">About</NavLink>
@@ -17,6 +17,6 @@ export default props => (
           GitHub
         </NavLink>
       </div>
-    </Container>
-  </Footer>
+    </Box>
+  </Box>
 )

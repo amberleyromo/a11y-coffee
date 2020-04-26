@@ -1,9 +1,9 @@
 /** @jsx jsx */
-import { jsx, Header, Container, Flex, useColorMode } from "theme-ui"
+import { jsx, Box, Flex, useColorMode } from "theme-ui"
 import NavLink from "./nav-link"
 import Button from "./button"
 
-const modes = ["swiss", "gatsby", "dark", "deep"]
+const modes = ["swiss", "gatsby", "dark", "deep", "default"]
 
 export default () => {
   const [mode, setMode] = useColorMode()
@@ -15,8 +15,8 @@ export default () => {
   }
 
   return (
-    <Header>
-      <Container>
+    <Box>
+      <Box>
         <Flex sx={{ justifyContent: "space-between" }}>
           <Flex sx={{ alignItems: "center" }}>
             <NavLink to="/">
@@ -39,7 +39,7 @@ export default () => {
             </Button>
           </Flex>
         </Flex>
-      </Container>
-    </Header>
+      </Box>
+    </Box>
   )
 }

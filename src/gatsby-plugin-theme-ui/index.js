@@ -1,8 +1,4 @@
-import prism from "@theme-ui/prism/presets/theme-ui"
-
 export default {
-  useCustomProperties: true,
-  initialColorMode: "light",
   colors: {
     text: "#000",
     background: "#fff",
@@ -14,6 +10,17 @@ export default {
     gray: "#777",
     darken: "rgba(0, 0, 0, .25)",
     modes: {
+      default: {
+        text: "#000",
+        background: "#fff",
+        primary: "#33e",
+        secondary: "#119",
+        muted: "#f6f6f6",
+        highlight: "#efeffe", // '#ffffcc',
+        accent: "#609",
+        gray: "#777",
+        darken: "rgba(0, 0, 0, .25)",
+      },
       gatsby: {
         text: "#000",
         background: "#FFFCF7",
@@ -57,7 +64,8 @@ export default {
     },
   },
   fonts: {
-    body: "system-ui, sans-serif",
+    body:
+      'system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif',
     heading: "inherit",
     monospace: "Menlo, monospace",
   },
@@ -157,7 +165,6 @@ export default {
       code: {
         color: "inherit",
       },
-      variant: "prism",
     },
     code: {
       fontFamily: "monospace",
@@ -216,5 +223,4 @@ export default {
       },
     },
   },
-  prism,
 }

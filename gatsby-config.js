@@ -5,7 +5,6 @@ module.exports = {
     author: `@amber1ey`,
   },
   plugins: [
-    "gatsby-plugin-theme-ui",
     "gatsby-plugin-sharp",
     {
       resolve: "gatsby-plugin-mdx",
@@ -32,5 +31,7 @@ module.exports = {
         path: `${__dirname}/src/pages/`,
       },
     },
+    "gatsby-plugin-theme-ui",
+    "gatsby-theme-style-guide",
   ],
 }
