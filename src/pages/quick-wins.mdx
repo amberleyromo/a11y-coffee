@@ -104,14 +104,17 @@ WCAG defines two levels of compliance for color contrast.
 
 Missing alt text for images is the second most common culprit. Ensure that you provide the `alt` attribute and a descriptive text value for each web image.
 
-```
+```html
 <img src="./feature-image" />
 ```
 
 This example image element above is missing an `alt` attribute. If you can't see the image and there's no alternative text, there's no means for a user to understand the intent of the image.
 
-```
-<img src="./feature-image" alt="Short-coated brown puppy facing right side, background blurred and indistinct." />
+```html
+<img
+  src="./feature-image"
+  alt="Short-coated brown puppy, background blurred."
+/>
 ```
 
 With the alt attribute providing sufficient descriptive text, users can discern the content of the photo without having seen the image.
@@ -128,8 +131,8 @@ If a link contains no text, the function or purpose of the link will be impercep
 
 This example pulled from the Washington Post's homepage shows a common example:
 
-```
-<a href="http://www.twitter.com/intent/user?screen_name=washingtonpost" class="homepage-footer-button middle">
+```html
+<a href="http://www.twitter.com/washingtonpost">
     <span class="fa fa-twitter"></span>
 </a>
 ```
@@ -150,7 +153,7 @@ Missing form input labels can make it difficult or impossible for users to submi
 
 The following form example is modified from the University of Washington's ["Accessible University" fictional homepage](https://www.washington.edu/accesscomputing/AU/before.html). In this example, the text "Name" is near the intended input area. That relationship will be clear to most sighted users, but not so for others. If the proper markup is not present, screen readers must guess what text, if any, describes what field.
 
-```
+```html
 <form action="#" method="post">
 
     <div class="required">
@@ -159,7 +162,11 @@ The following form example is modified from the University of Washington's ["Acc
     </div>
 
     <div>
-        <input id="submit" type="submit" name="submit" value="Submit" />
+        <input
+          id="submit"
+          type="submit"
+          name="submit"
+          value="Submit" />
     </div>
 
 </form>
@@ -169,16 +176,26 @@ The following form example is modified from the University of Washington's ["Acc
 
 To explicitly associate labels with form fields, labels must be marked up with the HTML `<label>` element. The `<label>` element has a `for` attribute whose value matches the `id` attribute of the associated form field.
 
-```
+```html
 <form action="after.html?submitted=yes" method="post">
 
     <div class="required">
         <label for="email">Email: (required)</label>
-        <input id="email" type="email" name="email" required/>
+        <input
+          id="email"
+          type="email"
+          name="email"
+          required
+        />
     </div>
 
     <div>
-        <input id="submit" type="submit" name="submit" value="Submit" />
+        <input
+          id="submit"
+          type="submit"
+          name="submit"
+          value="Submit"
+        />
     </div>
 
 </form>
@@ -198,7 +215,7 @@ For example, suppose a user navigates the web in both Spanish and English, and t
 
 Ensure that you identify a language in the opening `<html>` element:
 
-```
+```html
 <html lang="es">
   <!--document head and body-->
 </html>

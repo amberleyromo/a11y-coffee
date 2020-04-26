@@ -15,6 +15,7 @@
   "dependencies": {
     "@mdx-js/mdx": "^1.5.9",
     "@mdx-js/react": "^1.5.9",
+    "@theme-ui/prism": "^0.3.0",
     "gatsby": "^2.20.36",
     "gatsby-plugin-mdx": "^1.1.11",
     "gatsby-plugin-sharp": "^2.2.19",

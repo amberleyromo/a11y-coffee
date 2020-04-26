@@ -1,3 +1,5 @@
+import prismtomorrow from "@theme-ui/prism/presets/prism-tomorrow.json"
+
 let white = "#fff"
 let apricot = "#f7882f"
 let citrus = "#f7c331"
@@ -6,23 +8,27 @@ let steel = "#0a1612"
 let lightSteel = "#303C38"
 let watermelon = "#CC080C"
 let neutral = "#efefef"
+let lightNeutral = "#F4F4F4"
 let plant = "#249786"
 let darkPlant = "#007160"
 
 export default {
+  useColorSchemeMediaQuery: true,
+  initialColorModeName: "light",
   colors: {
     text: steel,
     background: white,
     primary: plant,
     secondary: watermelon,
     muted: neutral,
-    highlight: citrus, // '#ffffcc',
+    highlight: citrus,
     accent: apricot,
     gray: "#777",
     darken: darkPlant,
+    codeBg: neutral,
     modes: {
       dark: {
-        text: "#fff",
+        text: white,
         background: steel,
         primary: citrus,
         secondary: watermelon,
@@ -31,6 +37,7 @@ export default {
         accent: "#c0f",
         gray: "#999",
         darken: darkCitrus,
+        codeBg: lightNeutral,
       },
     },
   },
@@ -127,24 +134,24 @@ export default {
       },
     },
     pre: {
-      fontFamily: "monospace",
+      // fontFamily: "monospace",
       fontSize: 1,
       p: 3,
-      color: "text",
-      bg: "muted",
-      overflow: "auto",
-      code: {
-        color: "inherit",
-      },
+      // color: "text",
+      bg: "codeBg",
+      // overflow: "auto",
+      // code: {
+      //   color: "inherit",
+      // },
+      ...prismtomorrow,
     },
     code: {
-      fontFamily: "monospace",
-      fontSize: 1,
+      ...prismtomorrow,
     },
     inlineCode: {
-      fontFamily: "monospace",
+      ...prismtomorrow,
+      bg: "none",
       color: "darken",
-      bg: "muted",
     },
     table: {
       width: "100%",

@@ -1,8 +1,11 @@
 /** @jsx jsx */
 import { jsx } from "theme-ui"
+import Prism from "@theme-ui/prism"
 
-const heading = Tag => props =>
-  !!props.id ? (
+const heading = Tag => props => {
+  // checking for children avoids duplicates where heading is explicitly linked in code
+  if (!props.id || props.children) return <Tag {...props} />
+  return (
     <Tag {...props}>
       <a
         href={`#${props.id}`}
@@ -17,11 +20,12 @@ const heading = Tag => props =>
         {props.children}
       </a>
     </Tag>
-  ) : (
-    <Tag {...props} />
   )
+}
 
 export default {
+  pre: props => props.children,
+  code: Prism,
   h2: heading("h2"),
   h3: heading("h3"),
   h4: heading("h4"),
