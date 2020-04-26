@@ -4,7 +4,7 @@ import { useState, useRef } from "react"
 import { Global } from "@emotion/core"
 
 import Header from "./header"
-import Main from "./Main"
+import Main from "./main"
 import Footer from "./footer"
 // import Sidebar from './sidebar'
 // import Pagination from './pagination'
