@@ -3,8 +3,8 @@ import { jsx, ThemeProvider, Box } from "theme-ui"
 
 const gradient = `linear-gradient(120deg,
   rgba(132, 132, 132, .2),
-  rgba(51, 51, 238, 0),
-  rgba(51, 51, 238, .25))`
+  rgba(51, 51, 238, .1),
+  rgba(51, 51, 238, .2))`
 
 export default props => (
   <ThemeProvider

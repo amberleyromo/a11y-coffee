@@ -3,7 +3,6 @@ import { jsx, Styled, Box } from "theme-ui"
 import { useState, useRef } from "react"
 import { Global } from "@emotion/core"
 
-import SkipLink from "./skip-link"
 import Header from "./header"
 import Main from "./Main"
 import Footer from "./footer"
@@ -30,7 +29,6 @@ export default props => {
           },
         }}
       />
-      <SkipLink>Skip to content</SkipLink>
       <Box>
         <Header nav={nav} menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
         <Main {...props} />

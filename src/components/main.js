@@ -3,7 +3,7 @@ import { jsx, Box } from "theme-ui"
 
 export default props => {
   return (
-    <main>
+    <main id="content">
       <Box
         sx={{
           px: props.fullWidth ? 0 : 3,

@@ -1,16 +1,21 @@
 /** @jsx jsx */
 import { jsx, Flex, useColorMode } from "theme-ui"
+import SkipLink from "./skip-link"
 import NavLink from "./nav-link"
 import Button from "./button"
 
-const modes = ["swiss", "gatsby", "dark", "deep", "default"]
+const modes = ["light", "dark"]
 
 export default () => {
   const [mode, setMode] = useColorMode()
 
   const cycleMode = e => {
+    console.log(`cycleMode`)
+    console.log(`currentMode`, { mode })
     const i = modes.indexOf(mode)
     const next = modes[(i + 1) % modes.length]
+    console.log(`newMode`, { next })
+    console.log(`---------------`)
     setMode(next)
   }
 
@@ -24,6 +29,7 @@ export default () => {
         py: 3,
       }}
     >
+      <SkipLink>Skip to content</SkipLink>
       <Flex>
         <NavLink to="/">
           A11y Coffee{" "}

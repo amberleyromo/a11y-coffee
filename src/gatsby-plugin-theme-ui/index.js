@@ -1,65 +1,36 @@
+let white = "#fff"
+let apricot = "#f7882f"
+let citrus = "#f7c331"
+let darkCitrus = "#D19D0B"
+let steel = "#0a1612"
+let lightSteel = "#303C38"
+let watermelon = "#CC080C"
+let neutral = "#efefef"
+let plant = "#249786"
+let darkPlant = "#007160"
+
 export default {
   colors: {
-    text: "#000",
-    background: "#fff",
-    primary: "#33e",
-    secondary: "#119",
-    muted: "#f6f6f6",
-    highlight: "#efeffe", // '#ffffcc',
-    accent: "#609",
+    text: steel,
+    background: white,
+    primary: plant,
+    secondary: watermelon,
+    muted: neutral,
+    highlight: citrus, // '#ffffcc',
+    accent: apricot,
     gray: "#777",
-    darken: "rgba(0, 0, 0, .25)",
+    darken: darkPlant,
     modes: {
-      default: {
-        text: "#000",
-        background: "#fff",
-        primary: "#33e",
-        secondary: "#119",
-        muted: "#f6f6f6",
-        highlight: "#efeffe", // '#ffffcc',
-        accent: "#609",
-        gray: "#777",
-        darken: "rgba(0, 0, 0, .25)",
-      },
-      gatsby: {
-        text: "#000",
-        background: "#FFFCF7",
-        primary: "#542C85",
-        secondary: "000",
-        muted: "#f6f6f6",
-        highlight: "#efeffe",
-        accent: "#609",
-        gray: "#777",
-      },
       dark: {
         text: "#fff",
-        background: "#060606",
-        primary: "#3cf",
-        secondary: "#e0f",
-        muted: "#191919",
+        background: steel,
+        primary: citrus,
+        secondary: watermelon,
+        muted: lightSteel,
         highlight: "#29112c",
-        gray: "#999",
         accent: "#c0f",
-      },
-      deep: {
-        text: "hsl(210, 50%, 96%)",
-        background: "hsl(230, 25%, 18%)",
-        primary: "hsl(260, 100%, 80%)",
-        secondary: "hsl(290, 100%, 80%)",
-        highlight: "hsl(260, 20%, 40%)",
-        accent: "hsl(290, 100%, 80%)",
-        muted: "hsla(230, 20%, 0%, 20%)",
-        gray: "hsl(210, 50%, 60%)",
-      },
-      swiss: {
-        text: "hsl(10, 20%, 20%)",
-        background: "hsl(10, 10%, 98%)",
-        primary: "hsl(10, 81%, 45%)",
-        secondary: "hsl(10, 60%, 50%)",
-        highlight: "hsl(10, 40%, 90%)",
-        accent: "hsl(250, 60%, 30%)",
-        muted: "hsl(10, 20%, 94%)",
-        gray: "hsl(10, 20%, 50%)",
+        gray: "#999",
+        darken: darkCitrus,
       },
     },
   },
@@ -150,7 +121,7 @@ export default {
       fontSize: 1,
     },
     a: {
-      color: "primary",
+      color: "darken",
       "&:hover": {
         color: "secondary",
       },
@@ -172,7 +143,7 @@ export default {
     },
     inlineCode: {
       fontFamily: "monospace",
-      color: "secondary",
+      color: "darken",
       bg: "muted",
     },
     table: {
