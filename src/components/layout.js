@@ -14,7 +14,6 @@ import Footer from "./footer"
 export default props => {
   const [menuOpen, setMenuOpen] = useState(false)
   const nav = useRef(null)
-  console.log(`layout props.fullWidth`, props.fullWidth)
 
   return (
     <Styled.root>

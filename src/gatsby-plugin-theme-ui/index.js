@@ -9,8 +9,15 @@ let lightSteel = "#303C38"
 let watermelon = "#CC080C"
 let neutral = "#efefef"
 let lightNeutral = "#F4F4F4"
+let fresh = "#9CB1FF"
 let plant = "#249786"
 let darkPlant = "#007160"
+
+let focusStyles = {
+  outlineWidth: "3px",
+  outlineStyle: "dashed",
+  outlineColor: "secondary",
+}
 
 export default {
   useColorSchemeMediaQuery: true,
@@ -31,7 +38,7 @@ export default {
         text: white,
         background: steel,
         primary: citrus,
-        secondary: watermelon,
+        secondary: fresh,
         muted: lightSteel,
         highlight: "#29112c",
         accent: "#c0f",
@@ -132,6 +139,9 @@ export default {
       "&:hover": {
         color: "secondary",
       },
+      "&:focus": {
+        ...focusStyles,
+      },
     },
     pre: {
       // fontFamily: "monospace",
@@ -189,15 +199,6 @@ export default {
     xray: {
       "*": {
         outline: "1px solid rgba(0, 192, 255, .25)",
-      },
-    },
-    navlink: {
-      display: "inline-block",
-      fontWeight: "bold",
-      color: "inherit",
-      textDecoration: "none",
-      ":hover,:focus": {
-        color: "primary",
       },
     },
   },

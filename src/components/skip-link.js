@@ -15,7 +15,7 @@ export default props => (
       overrflow: "hidden",
       position: "absolute",
       top: -9999,
-      ":focus": {
+      "&:focus": {
         p: 3,
         position: "fixed",
         zIndex: 4,
@@ -28,6 +28,9 @@ export default props => (
         width: "auto",
         height: "auto",
         clip: "auto",
+        outlineWidth: "2px",
+        outlineStyle: "dashed",
+        outlineColor: "secondary",
       },
     }}
   />

@@ -10,12 +10,8 @@ export default () => {
   const [mode, setMode] = useColorMode()
 
   const cycleMode = e => {
-    console.log(`cycleMode`)
-    console.log(`currentMode`, { mode })
     const i = modes.indexOf(mode)
     const next = modes[(i + 1) % modes.length]
-    console.log(`newMode`, { next })
-    console.log(`---------------`)
     setMode(next)
   }
 

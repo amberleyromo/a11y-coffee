@@ -16,8 +16,10 @@ export default props => (
       bg: "muted",
       border: 0,
       borderRadius: 2,
-      ":focus": {
-        outline: "2px solid",
+      "&:focus": {
+        outlineWidth: "2px",
+        outlineStyle: "dashed",
+        outlineColor: "secondary",
       },
     }}
   />

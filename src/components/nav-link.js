@@ -14,6 +14,11 @@ const styles = {
   "&.active": {
     color: "primary",
   },
+  "&:focus": {
+    outlineWidth: "2px",
+    outlineStyle: "dashed",
+    outlineColor: "secondary",
+  },
 }
 
 export default ({ href, ...props }) => {
