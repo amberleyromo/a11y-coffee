@@ -7,7 +7,7 @@ const styles = {
   display: "block",
   px: 2,
   py: 2,
-  color: "primary",
+  color: "darken",
   textDecoration: "none",
   fontSize: 3,
   fontWeight: "bold",

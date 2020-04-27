@@ -12,11 +12,11 @@ export default props => (
       m: 0,
       px: 2,
       py: 2,
-      color: "primary",
+      color: "darken",
       bg: "background",
       borderWidth: "2px",
       borderStyle: "solid",
-      borderColor: "primary",
+      borderColor: "darken",
       borderRadius: 2,
       "&:hover": {
         borderColor: "secondary",
