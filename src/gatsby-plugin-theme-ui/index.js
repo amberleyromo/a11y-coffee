@@ -140,6 +140,7 @@ export default {
         color: "secondary",
       },
       "&:focus": {
+        color: "secondary",
         ...focusStyles,
       },
     },

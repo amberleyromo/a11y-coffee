@@ -24,6 +24,7 @@ export default props => (
       },
       "&:focus": {
         border: "transparent",
+        color: "secondary",
         outlineWidth: "2px",
         outlineStyle: "dashed",
         outlineColor: "secondary",

@@ -14,6 +14,13 @@ const heading = Tag => props => {
           textDecoration: "none",
           ":hover": {
             textDecoration: "underline",
+            color: "secondary",
+          },
+          "&:focus": {
+            color: "secondary",
+            outlineWidth: "2px",
+            outlineStyle: "dashed",
+            outlineColor: "secondary",
           },
         }}
       >
