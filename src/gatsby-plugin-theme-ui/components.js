@@ -4,7 +4,7 @@ import Prism from "@theme-ui/prism"
 
 const heading = Tag => props => {
   // checking for children avoids duplicates where heading is explicitly linked in code
-  if (!props.id || props.children) return <Tag {...props} />
+  if (!props.id || typeof props.children !== "string") return <Tag {...props} />
   return (
     <Tag {...props}>
       <a

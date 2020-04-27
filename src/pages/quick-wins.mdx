@@ -23,22 +23,22 @@ The topic and practice of web accessibility is wide-ranging and nuanced, which c
 ## Table of contents
 
 - [Most common web accessibility errors](/quick-wins/#most-common-web-accessibility-errors)
-  - [Low contrast](/quick-wins/#low-contrast)
-  - [Missing alt text for images](/quick-wins/#missing-alt-text-for-images)
-  - [Empty links](/quick-wins/#empty-links)
-  - [Missing form input labels](/quick-wins/#missing-form-input-labels)
-  - [Missing document language](/quick-wins/#missing-document-language)
-  - [Empty Buttons](/quick-wins/#empty-buttons)
+  1. [Low contrast](/quick-wins/#1-low-contrast)
+  2. [Missing alt text for images](/quick-wins/#2-missing-alt-text-for-images)
+  3. [Empty links](/quick-wins/#3-empty-links)
+  4. [Missing form input labels](/quick-wins/#4-missing-form-input-labels)
+  5. [Missing document language](/quick-wins/#5-missing-document-language)
+  6. [Empty Buttons](/quick-wins/#6-empty-buttons)
 
 ## Most common web accessibility errors
 
-### Low contrast
+### #1: Low contrast
 
 Users must be able to _perceive_ content on the page. A sufficient contrast ratio supports that perception. Ensure that you're using sufficient color contrast.
 
 In WCAG, contrast is measured using "relative luminance". Relative luminance is the brightness between two colors.[^webaim-contrast] Relative luminance is expressed as a ratio ranging from 1:1 (white text on a white background) to 21:1 (black text on a white background).
 
-> _The second example shown is deliberately a contrast error. It shows white text on a white background, illustrating a contrast ratio of 1:1._
+> _The first example shows black text on a white background. The second example shows white text on a white background, illustrating a contrast ratio of 1:1, which is completely imperceptible to anyone._
 
 <ImageGallery>
 
@@ -100,7 +100,7 @@ WCAG defines two levels of compliance for color contrast.
 
 </Callout>
 
-### Missing alt text for images
+### #2: Missing alt text for images
 
 Missing alt text for images is the second most common culprit. Ensure that you provide the `alt` attribute and a descriptive text value for each web image.
 
@@ -125,7 +125,7 @@ With the alt attribute providing sufficient descriptive text, users can discern 
 
 </Callout>
 
-### Empty links
+### #3: Empty links
 
 If a link contains no text, the function or purpose of the link will be imperceptible to some users. This happens when an anchor element has an `href` attribute but contains no text, or a linked image has no alternative text.
 
@@ -145,7 +145,7 @@ That markup displays a social icon that links out to Twitter. However, it lacks 
 
 </Callout>
 
-### Missing form input labels
+### #4: Missing form input labels
 
 Missing form input labels can make it difficult or impossible for users to submit forms.
 
@@ -207,7 +207,7 @@ To explicitly associate labels with form fields, labels must be marked up with t
 
 </Callout>
 
-### Missing document language
+### #5: Missing document language
 
 Screen reader users select a default language. If the language of a page is not specified, the screen reader will default to the user's selected default language. For multi-lingual users, this can result in strange behavior.
 
@@ -227,7 +227,7 @@ Ensure that you identify a language in the opening `<html>` element:
 
 </Callout>
 
-### Empty buttons
+### #6: Empty buttons
 
 Screen reader users won't be able to discern the purpose of a button that has no accessible name. Buttons must have discernible text that clearly describes the button's purpose, function, or action.
 
