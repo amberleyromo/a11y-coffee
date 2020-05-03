@@ -2,7 +2,8 @@
 title: About
 ---
 
-import { SEO } from ".."
+import { SEO, Player } from ".."
+import audio from "../assets/a11y-coffee-about.m4a"
 
 <SEO
   title="About A11y Coffee"
@@ -11,9 +12,17 @@ import { SEO } from ".."
 
 # About
 
+<Player
+  audio={{
+    title: "About",
+    slug: "about",
+    url: audio,
+  }}
+/>
+
 A11y Coffee is primarily intended for web developers, but may be useful for anyone interested in learning more about web accessibility.
 
-I created it because I wanted a single, consolidated resource to send when someone asks "what is web accessibility and how do I get started?" The goal of that resource is to summarize everything I would want to communicate to that person, to answer their question.
+I created it because I wanted a single, consolidated resource to send when someone asks "what is web accessibility and how do I get started?" The goal of this resource is to summarize everything I would want to communicate to that person, to answer that question.
 
 I hope you find it useful!
 

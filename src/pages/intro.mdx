@@ -2,8 +2,9 @@
 title: Intro
 ---
 
-import { SEO } from ".."
+import { SEO, Player } from ".."
 import { PreviousNextNav } from ".."
+import audio from "../assets/a11y-coffee-intro.m4a"
 
 <SEO
   title="Introduction to Web Accessibility"
@@ -11,6 +12,14 @@ import { PreviousNextNav } from ".."
 />
 
 # Introduction to web accessibility
+
+<Player
+  audio={{
+    title: "Intro",
+    slug: "intro",
+    url: audio,
+  }}
+/>
 
 ## Summary
 
@@ -69,7 +78,7 @@ The [World Wide Web Consortium (W3C)](https://www.w3.org/) maintains the [Web Co
 
 ### The Four Guiding Principles of Accessibility
 
-The current version of WCAG is 2.1. WCAG version 1.0 focused heavily on techniques and checkpoints for achieving web accessibility. Version 2 focuses instead on four main guiding principles of accessibility. Those four principles are perceivable, operable, understandable, and robust (POUR)[^webaim-pour].
+The current version of WCAG is 2.1. WCAG version 1.0 focused heavily on techniques and checkpoints for achieving web accessibility. Version 2 focuses instead on four main guiding principles of accessibility. Those four principles are perceivable, operable, understandable, and robust (together known as "POUR")[^webaim-pour].
 
 > _The following section is almost verbatim from a [tweet thread by Carie Fisher](https://threadreaderapp.com/thread/1130825247320489987.html)[^tweet-thread-pour] (with minimal tweaks). Thank you Carie for this breakdown!_
 
