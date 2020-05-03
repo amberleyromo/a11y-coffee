@@ -9,7 +9,6 @@ export default ({ children, ...props }) => {
         ml: "-1.5rem",
         p: ".5rem 1.25rem",
         color: "text",
-        bg: "muted",
         border: "2px solid",
       }}
     >

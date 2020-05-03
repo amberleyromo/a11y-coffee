@@ -3,7 +3,7 @@ title: Quick Wins
 ---
 
 import { Flex } from "theme-ui"
-import { ColorContrast, ImageGallery, SEO, Callout } from ".."
+import { ColorContrast, ImageGallery, SEO, Callout, PreviousNextNav } from ".."
 
 <SEO
   title="Quick Wins for Web Accessibility"
@@ -174,7 +174,7 @@ The following form example is modified from the University of Washington's ["Acc
 
 #### Fixed example with form input labels
 
-To explicitly associate labels with form fields, labels must be marked up with the HTML `<label>` element. The `<label>` element has a `for` attribute whose value matches the `id` attribute of the associated form field.
+To explicitly associate labels with form fields, labels must be marked up with the HTML `<label>` element. The `<label>` element takes a `for` attribute, whose value should match the `id` attribute of the associated form element.
 
 ```html
 <form action="after.html?submitted=yes" method="post">
@@ -213,7 +213,7 @@ Screen reader users select a default language. If the language of a page is not 
 
 For example, suppose a user navigates the web in both Spanish and English, and their default language is set to Spanish. If a website doesn't define the language of the content, and the content is in English, the screen reader will read aloud English content with a default voice designed for Spanish content.
 
-Ensure that you identify a language in the opening `<html>` element:
+Ensure that you identify a language in the opening `<html>` element, using the `lang` attribute:
 
 ```html
 <html lang="es">
@@ -229,9 +229,7 @@ Ensure that you identify a language in the opening `<html>` element:
 
 ### #6: Empty buttons
 
-Screen reader users won't be able to discern the purpose of a button that has no accessible name. Buttons must have discernible text that clearly describes the button's purpose, function, or action.
-
-Screen reader users are not able to discern the purpose of button that has no accessible name.
+Users of assistive technology can have trouble discerning the purpose of a button that has no accessible name. Buttons must have discernible text that clearly describes the button's purpose, function, or action.
 
 <Callout>
 
@@ -239,9 +237,14 @@ Screen reader users are not able to discern the purpose of button that has no ac
 
 </Callout>
 
-[^webaim-million]: The [WebAIM million study](https://webaim.org/projects/million/) cites this figure.
-[^webaim-contrast]: WebAIM: [Article on contrast](https://webaim.org/articles/contrast/)
-
 ## Read on
 
 Pour another cup and [start testing for web accessibility](/start-testing/).
+
+<PreviousNextNav
+  previous={{ link: "/intro/", title: "Intro" }}
+  next={{ link: "/start-testing/", title: "Start Testing" }}
+/>
+
+[^webaim-million]: The [WebAIM million study](https://webaim.org/projects/million/) cites this figure.
+[^webaim-contrast]: WebAIM: [Article on contrast](https://webaim.org/articles/contrast/)

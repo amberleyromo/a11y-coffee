@@ -36,7 +36,7 @@ export default () => {
       </Flex>
       <Flex>
         {/* <NavLink to="/about/">About</NavLink>
-            <NavLink href="/friday-a11y/">Friday A11Y</NavLink> */}
+        <NavLink href="/friday-a11y/">Friday A11Y</NavLink> */}
         <Button
           sx={{
             ml: 2,
