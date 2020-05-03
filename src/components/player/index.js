@@ -7,13 +7,36 @@ import VolumeBars from "./volume-bars"
 import "./player.css"
 
 export default function Player({ audio }) {
+  const { url, title, slug } = audio
   const audioRef = useRef()
+
   const [isPlaying, setIsPlaying] = useState(false)
+  const [currentTime, setCurrentTime] = useState(0) // eventually read from localStorage
+  const [duration, setDuration] = useState(null)
 
   const togglePlay = e => {
     const method = isPlaying ? "pause" : "play"
     audioRef.current[method]()
     setIsPlaying(!isPlaying)
+  }
+
+  const handlePlayPause = () => {
+    setIsPlaying(!isPlaying)
+  }
+
+  const updateTime = e => {
+    const { currentTime = 0 } = e.currentTarget
+    setCurrentTime(currentTime)
+  }
+
+  const updateDuration = e => {
+    const { duration = 0 } = e.currentTarget
+    setDuration(duration)
+  }
+
+  const groupedInitialUpdates = e => {
+    updateTime(e)
+    updateDuration(e)
   }
 
   return (
@@ -26,13 +49,12 @@ export default function Player({ audio }) {
         >
           <p className="player__icon">{isPlaying ? <FaPause /> : <FaPlay />}</p>
           <p>
-            {/* {formatTime(currentTime)} / {formatTime(duration)} */}
-            @TODO
+            {formatTime(currentTime)} / {formatTime(duration)}
           </p>
         </button>
       </div>
       <div className="player__section player__section--middle">
-        <h3 className="player__title">Playing: @TODO</h3>
+        <h3 className="player__title">Playing: {title}</h3>
         <div
           className="player__tooltip"
           //   style={{
@@ -58,11 +80,11 @@ export default function Player({ audio }) {
       </div>
       <audio
         ref={audioRef}
-        // onPlay={this.playPause}
-        // onPause={this.playPause}
-        // onTimeUpdate={this.timeUpdate}
+        onPlay={handlePlayPause}
+        onPause={handlePlayPause}
+        onTimeUpdate={updateTime}
         // onVolumeChange={this.volumeUpdate}
-        // onLoadedMetadata={this.groupUpdates}
+        onLoadedMetadata={groupedInitialUpdates}
         src={audio.url}
       />
     </div>
