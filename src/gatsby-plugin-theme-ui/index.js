@@ -11,7 +11,7 @@ let neutral = "#efefef"
 let lightNeutral = "#F4F4F4"
 let fresh = "#9CB1FF"
 let plant = "#249786"
-let darkPlant = "#007160"
+let darkPlant = "#1f8475"
 
 let focusStyles = {
   outlineWidth: "3px",
