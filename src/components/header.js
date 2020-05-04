@@ -4,7 +4,7 @@ import SkipLink from "./skip-link"
 import NavLink from "./nav-link"
 import Button from "./button"
 
-const modes = ["light", "dark"]
+const modes = ["default", "dark"]
 
 export default () => {
   const [mode, setMode] = useColorMode()
@@ -43,7 +43,7 @@ export default () => {
           }}
           onClick={cycleMode}
         >
-          {mode}
+          {mode === `default` ? `light` : `dark`}
         </Button>
       </Flex>
     </Flex>

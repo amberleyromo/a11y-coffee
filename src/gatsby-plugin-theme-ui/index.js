@@ -21,7 +21,6 @@ let focusStyles = {
 
 export default {
   useColorSchemeMediaQuery: true,
-  initialColorModeName: "light",
   colors: {
     text: steel,
     background: white,
