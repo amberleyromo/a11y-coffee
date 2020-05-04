@@ -62,7 +62,7 @@ class VolumeBars extends Component {
               onClick={() => {
                 this.handleOnClick(index)
               }}
-              onChange={this.props.volume}
+              onChange={this.props.onChange}
               type="radio"
               name="volume"
               value={item.deci}

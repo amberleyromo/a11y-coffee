@@ -18,6 +18,7 @@ export default function Player({ audio }) {
   const [showTooltip, setShowTooltip] = useState(false)
   const [tooltipTime, setTooltipTime] = useState("0:00")
   const [progressTime, setProgressTime] = useState(0)
+  const [currentVolume, setCurrentVolume] = useState(1)
 
   const togglePlay = e => {
     const method = isPlaying ? "pause" : "play"
@@ -57,9 +58,29 @@ export default function Player({ audio }) {
   }
 
   const seekTime = e => {
-    console.log(`e.nativeEvent.offsetX`, e.nativeEvent.offsetX)
     setTooltipPosition(e.nativeEvent.offsetX)
     setTooltipTime(formatTime(scrubTime(e)))
+  }
+
+  const manageVolumeBars = e => {
+    console.log(`previous volume`, audioRef.current.volume)
+    audioRef.current.volume = e.currentTarget.value
+    console.log(`new volume`, e.currentTarget.value)
+    setCurrentVolume(`${e.currentTarget.value}`)
+  }
+
+  const updateVolume = e => {
+    // @TODO
+    console.log(`updateVolume running`)
+    //   const { timeWasLoaded } = this.state
+    //   // Check if the user already had a curent volume
+    //   if (timeWasLoaded) {
+    //     const lastVolume = localStorage.getItem(`lastVolumeSetting`)
+    //     if (lastVolume) {
+    //       e.currentTarget.volume = JSON.parse(lastVolume).lastVolumePref
+    //     }
+    //     this.setState({ timeWasLoaded: false })
+    //   }
   }
 
   return (
@@ -113,8 +134,7 @@ export default function Player({ audio }) {
         <div className="player__volume">
           <p>VOLUME</p>
           <div className="player__inputs">
-            {/* <VolumeBars volume={this.volume} /> */}
-            @TODO
+            <VolumeBars onChange={manageVolumeBars} />
           </div>
         </div>
       </div>
@@ -123,7 +143,7 @@ export default function Player({ audio }) {
         // onPlay={handlePlayPause}
         // onPause={handlePlayPause}
         onTimeUpdate={updateTime}
-        // onVolumeChange={this.volumeUpdate}
+        onVolumeChange={updateVolume}
         onLoadedMetadata={groupedInitialUpdates}
         src={url}
       />
