@@ -7,7 +7,7 @@ let darkCitrus = "#D19D0B"
 let steel = "#0a1612"
 let lightSteel = "#303C38"
 let watermelon = "#CC080C"
-let neutral = "#fdfdfd"
+let neutral = "#efefef"
 let lightNeutral = "#F4F4F4"
 let fresh = "#9CB1FF"
 let plant = "#249786"
@@ -32,6 +32,7 @@ export default {
     accent: apricot,
     gray: "#777",
     darken: darkPlant,
+    playerBg: steel,
     codeBg: neutral,
     modes: {
       dark: {
@@ -44,6 +45,7 @@ export default {
         accent: "#c0f",
         gray: "#999",
         darken: darkCitrus,
+        playerBg: steel,
         codeBg: lightNeutral,
       },
     },

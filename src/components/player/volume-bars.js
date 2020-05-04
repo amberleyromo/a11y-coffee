@@ -45,19 +45,6 @@ const playerVolumeLabelCss = {
   },
 }
 
-const playerVolumeInputCss = {
-  "&:checked": {
-    "& ~ label": {
-      background: "hotpink",
-      padding: `10rem`,
-    },
-    "& + label": {
-      background: `hotpink`,
-      padding: `10rem`,
-    },
-  },
-}
-
 class VolumeBars extends Component {
   state = {
     volumeBarList: getItems(10),
@@ -95,13 +82,16 @@ class VolumeBars extends Component {
     })
   }
 
+  getLabelBg = (theme, isChecked) => {
+    return isChecked ? theme.colors.primary : theme.colors.muted
+  }
+
   render() {
     return (
       <Fragment>
         {this.state.volumeBarList.map((item, index) => (
           <Fragment key={item.integer}>
             <input
-              sx={playerVolumeInputCss}
               onClick={() => {
                 this.handleOnClick(index)
               }}
@@ -113,13 +103,11 @@ class VolumeBars extends Component {
               sx={srOnlyCss}
             />
             <label
-              sx={playerVolumeLabelCss}
               htmlFor={item.vol}
-              style={
-                item.checked
-                  ? { background: "#5E6999" }
-                  : { background: "#e4e4e4" }
-              }
+              sx={{
+                ...playerVolumeLabelCss,
+                bg: theme => this.getLabelBg(theme, item.checked),
+              }}
             >
               <span sx={srOnlyCss}>{item.level}</span>
             </label>

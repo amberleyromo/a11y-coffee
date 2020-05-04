@@ -11,7 +11,9 @@ import VolumeBars from "./volume-bars"
 // https://github.com/gatsbyjs/gatsby/issues/13947#issuecomment-491214724
 
 export default function Player({ audio }) {
-  const { url, title, slug } = audio
+  // @TODO: use slug
+  // const { url, title, slug } = audio
+  const { url, title } = audio
   const audioRef = useRef()
   const progressRef = useRef()
 
@@ -125,13 +127,13 @@ export default function Player({ audio }) {
   const playerCss = {
     bottom: 0,
     width: `100%`,
-    background: `#1d1d1d`,
-    border: 0,
-    // borderTop: `thin solid #434f64`,
+    bg: `playerBg`,
+    borderWidth: "thin",
+    borderStyle: "solid",
+    borderColor: "primary",
     color: `#fff`,
     display: `flex`,
     flexWrap: `wrap`,
-    position: `relative`,
     position: `sticky`,
     top: `-1px`,
     zIndex: 2,
@@ -140,9 +142,6 @@ export default function Player({ audio }) {
   const playerSectionCss = {
     order: 2,
     fontSize: `1rem`,
-    // p: {
-    //   margin: 0,
-    // },
   }
 
   const playerSectionLeftCss = {
@@ -197,7 +196,7 @@ export default function Player({ audio }) {
     transform: `translate(-50%)`,
     opacity: 0,
     "&:after": {
-      content: " ",
+      content: '" "',
       position: `absolute`,
       bottom: `94%`,
       left: `50%`,
@@ -209,7 +208,7 @@ export default function Player({ audio }) {
   }
 
   const playerButtonCss = {
-    background: `#1d1d1d`,
+    bg: `playerBg`,
     border: 0,
     color: `#fff`,
     padding: `1rem`,
@@ -256,11 +255,12 @@ export default function Player({ audio }) {
   }
 
   const playerProgressTimeCss = {
-    background: `#c1dbdc`,
     borderRight: `1px solid rgba(0, 0, 0, 0.1)`,
     height: `100%`,
     transition: `width 0.1s`,
-    background: `linear-gradient(30deg, #b3bada 0%, #434f64 100%)`,
+    // background: `#c1dbdc`,
+    background: theme =>
+      `linear-gradient(30deg, ${theme.colors.muted} 0%, ${theme.colors.darken} 100%)`,
   }
 
   const playerSpeedDisplayCss = {
@@ -268,17 +268,12 @@ export default function Player({ audio }) {
     display: `flex`,
     justifyContent: `center`,
     alignItems: `center`,
-    // marginTop: `.8em`,
   }
 
   return (
-    <div className="player" sx={{ ...playerCss }}>
-      <div
-        className="player__section player__section--left"
-        sx={{ ...playerSectionCss, ...playerSectionLeftCss }}
-      >
+    <div sx={{ ...playerCss }}>
+      <div sx={{ ...playerSectionCss, ...playerSectionLeftCss }}>
         <button
-          className="player__button"
           sx={playerButtonCss}
           onClick={togglePlay}
           aria-label={isPlaying ? "pause" : "play"}
@@ -292,12 +287,8 @@ export default function Player({ audio }) {
           </p>
         </button>
       </div>
-      <div
-        className="player__section player__section--middle"
-        sx={{ ...playerSectionCss, ...playerSectionMiddleCss }}
-      >
+      <div sx={{ ...playerSectionCss, ...playerSectionMiddleCss }}>
         <div
-          className="player__progress"
           sx={playerProgressCss}
           onClick={scrub}
           onMouseMove={seekTime}
@@ -310,18 +301,14 @@ export default function Player({ audio }) {
           ref={progressRef}
         >
           <div
-            className="player__progress--time"
             sx={playerProgressTimeCss}
             style={{
               width: `${progressTime}%`,
             }}
           />
         </div>
-        <h3 className="player__title" sx={playerTitleCss}>
-          Playing: {title}
-        </h3>
+        <h3 sx={playerTitleCss}>Playing: {title}</h3>
         <div
-          className="player__tooltip"
           sx={{
             ...playerTooltipCss,
             left: `${tooltipPosition}px`,
@@ -331,12 +318,8 @@ export default function Player({ audio }) {
           {tooltipTime}
         </div>
       </div>
-      <div
-        className="player__section player__section--right"
-        sx={{ ...playerSectionCss, ...playerSectionRightCss }}
-      >
+      <div sx={{ ...playerSectionCss, ...playerSectionRightCss }}>
         <button
-          className="player__button--speed"
           sx={{ ...playerButtonCss, ...playerSpeedButtonCss }}
           onClick={increasePlaybackSpeed}
           onContextMenu={decreasePlaybackSpeed}
@@ -345,7 +328,7 @@ export default function Player({ audio }) {
           <p sx={{ ...playerParagraphCss }}>SPEED</p>
           <span sx={playerSpeedDisplayCss}>{playbackRate} &times;</span>
         </button>
-        <div className="player__volume" sx={playerVolumeCss}>
+        <div sx={playerVolumeCss}>
           <p sx={{ ...playerParagraphCss }}>VOLUME</p>
           <div sx={{ fontSize: 0 }}>
             <VolumeBars onChange={manageVolumeBars} />
