@@ -19,6 +19,7 @@ export default function Player({ audio }) {
   const [tooltipTime, setTooltipTime] = useState("0:00")
   const [progressTime, setProgressTime] = useState(0)
   const [currentVolume, setCurrentVolume] = useState(1)
+  const [playbackRate, setPlaybackRate] = useState(1)
 
   const togglePlay = e => {
     const method = isPlaying ? "pause" : "play"
@@ -45,11 +46,6 @@ export default function Player({ audio }) {
     setDuration(duration)
   }
 
-  const groupedInitialUpdates = e => {
-    updateTime(e)
-    updateDuration(e)
-  }
-
   const scrubTime = e =>
     (e.nativeEvent.offsetX / progressRef.current.offsetWidth) * duration
 
@@ -63,15 +59,14 @@ export default function Player({ audio }) {
   }
 
   const manageVolumeBars = e => {
-    console.log(`previous volume`, audioRef.current.volume)
     audioRef.current.volume = e.currentTarget.value
-    console.log(`new volume`, e.currentTarget.value)
     setCurrentVolume(`${e.currentTarget.value}`)
   }
 
+  // this pretty much only matters for initializing the
+  // user's previous volume pref, if exists
   const updateVolume = e => {
     // @TODO
-    console.log(`updateVolume running`)
     //   const { timeWasLoaded } = this.state
     //   // Check if the user already had a curent volume
     //   if (timeWasLoaded) {
@@ -82,6 +77,42 @@ export default function Player({ audio }) {
     //     this.setState({ timeWasLoaded: false })
     //   }
   }
+
+  const updatePlaybackSpeed = change => {
+    const playbackRateMax = 2.5
+    const playbackRateMin = 0.75
+
+    let newSpeed = playbackRate + change
+
+    if (newSpeed > playbackRateMax) {
+      newSpeed = playbackRateMin
+    }
+
+    if (newSpeed < playbackRateMin) {
+      newSpeed = playbackRateMax
+    }
+
+    setPlaybackRate(newSpeed)
+  }
+
+  const increasePlaybackSpeed = () => {
+    updatePlaybackSpeed(0.25)
+  }
+
+  const decreasePlaybackSpeed = e => {
+    e.preventDefault()
+    updatePlaybackSpeed(-0.25)
+  }
+
+  const groupedInitialUpdates = e => {
+    updateTime(e)
+    updateDuration(e)
+    updateVolume(e)
+  }
+
+  useEffect(() => {
+    audioRef.current.playbackRate = playbackRate
+  }, [playbackRate])
 
   return (
     <div className="player">
@@ -127,9 +158,14 @@ export default function Player({ audio }) {
         </div>
       </div>
       <div className="player__section player__section--right">
-        <button onClick={() => {}} className="player__speed" type="button">
+        <button
+          onClick={increasePlaybackSpeed}
+          onContextMenu={decreasePlaybackSpeed}
+          className="player__speed"
+          type="button"
+        >
           <p>SPEED</p>
-          <span className="player__speeddisplay">@TODO &times;</span>
+          <span className="player__speeddisplay">{playbackRate} &times;</span>
         </button>
         <div className="player__volume">
           <p>VOLUME</p>
