@@ -133,8 +133,6 @@ export default function Player({ audio }) {
     flexWrap: `wrap`,
     position: `relative`,
     position: `sticky`,
-    position: `-webkit-sticky`,
-    // boxShadow: ` 0 0.5px 0 0 #ffffff inset, 0 1px 2px 0 #b3b3b3`,
     top: `-1px`,
     zIndex: 2,
   }
@@ -142,9 +140,9 @@ export default function Player({ audio }) {
   const playerSectionCss = {
     order: 2,
     fontSize: `1rem`,
-    p: {
-      margin: 0,
-    },
+    // p: {
+    //   margin: 0,
+    // },
   }
 
   const playerSectionLeftCss = {
@@ -198,7 +196,6 @@ export default function Player({ audio }) {
     top: `34px`,
     transform: `translate(-50%)`,
     opacity: 0,
-    // might need another semicolon?
     "&:after": {
       content: " ",
       position: `absolute`,
@@ -223,20 +220,16 @@ export default function Player({ audio }) {
 
   const playerSpeedButtonCss = {
     flex: `0 1 auto`,
-    // padding: `1rem`,
     display: `flex`,
     flexWrap: `wrap`,
     justifyContent: `flex-start`,
     flexDirection: `column`,
     alignItems: `center`,
-    // "& > *": {
-    //   width: `100%`,
-    //   margin: 0,
-    // },
   }
 
   const playerParagraphCss = {
     fontSize: `0.8rem`,
+    marginTop: `0.4rem`,
   }
 
   const playerVolumeCss = {
@@ -253,11 +246,6 @@ export default function Player({ audio }) {
     "&:focus-within": {
       outline: ` #ff0 auto 5px`,
     },
-    // "&:hover": {
-    //   label: {
-    //     borderTop: `1px solid #ccc`,
-    //   },
-    // },
   }
 
   const playerProgressCss = {
@@ -280,7 +268,7 @@ export default function Player({ audio }) {
     display: `flex`,
     justifyContent: `center`,
     alignItems: `center`,
-    marginTop: `.8em`,
+    // marginTop: `.8em`,
   }
 
   return (
@@ -296,10 +284,10 @@ export default function Player({ audio }) {
           aria-label={isPlaying ? "pause" : "play"}
           type="button"
         >
-          <p sx={{ ...playerParagraphCss }}>
+          <p sx={{ ...playerParagraphCss, fontSize: `1.4rem` }}>
             {isPlaying ? <FaPause /> : <FaPlay />}
           </p>
-          <p sx={{ ...playerParagraphCss }}>
+          <p sx={{ ...playerParagraphCss, marginBottom: 0 }}>
             {formatTime(currentTime)} / {formatTime(duration)}
           </p>
         </button>
@@ -359,7 +347,7 @@ export default function Player({ audio }) {
         </button>
         <div className="player__volume" sx={playerVolumeCss}>
           <p sx={{ ...playerParagraphCss }}>VOLUME</p>
-          <div sx={{ fontSize: 0, marginTop: `.4em` }}>
+          <div sx={{ fontSize: 0 }}>
             <VolumeBars onChange={manageVolumeBars} />
           </div>
         </div>

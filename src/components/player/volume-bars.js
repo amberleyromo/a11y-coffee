@@ -51,8 +51,6 @@ const playerVolumeInputCss = {
       background: "hotpink",
       padding: `10rem`,
     },
-  },
-  "&:checked": {
     "& + label": {
       background: `hotpink`,
       padding: `10rem`,
