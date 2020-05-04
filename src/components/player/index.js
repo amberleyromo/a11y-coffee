@@ -9,10 +9,15 @@ import "./player.css"
 export default function Player({ audio }) {
   const { url, title, slug } = audio
   const audioRef = useRef()
+  const progressRef = useRef()
 
   const [isPlaying, setIsPlaying] = useState(false)
   const [currentTime, setCurrentTime] = useState(0) // eventually read from localStorage
   const [duration, setDuration] = useState(null)
+  const [tooltipPosition, setTooltipPosition] = useState(0)
+  const [showTooltip, setShowTooltip] = useState(false)
+  const [tooltipTime, setTooltipTime] = useState("0:00")
+  const [progressTime, setProgressTime] = useState(0)
 
   const togglePlay = e => {
     const method = isPlaying ? "pause" : "play"
@@ -20,13 +25,18 @@ export default function Player({ audio }) {
     setIsPlaying(!isPlaying)
   }
 
-  const handlePlayPause = () => {
-    setIsPlaying(!isPlaying)
-  }
+  //   const handlePlayPause = () => {
+  //     setIsPlaying(!isPlaying)
+  //   }
 
   const updateTime = e => {
     const { currentTime = 0 } = e.currentTarget
+
+    const progressTime = (currentTime / duration) * 100
+    if (Number.isNaN(progressTime)) return
+
     setCurrentTime(currentTime)
+    setProgressTime(progressTime)
   }
 
   const updateDuration = e => {
@@ -37,6 +47,19 @@ export default function Player({ audio }) {
   const groupedInitialUpdates = e => {
     updateTime(e)
     updateDuration(e)
+  }
+
+  const scrubTime = e =>
+    (e.nativeEvent.offsetX / progressRef.current.offsetWidth) * duration
+
+  const scrub = e => {
+    audioRef.current.currentTime = scrubTime(e)
+  }
+
+  const seekTime = e => {
+    console.log(`e.nativeEvent.offsetX`, e.nativeEvent.offsetX)
+    setTooltipPosition(e.nativeEvent.offsetX)
+    setTooltipTime(formatTime(scrubTime(e)))
   }
 
   return (
@@ -54,24 +77,41 @@ export default function Player({ audio }) {
         </button>
       </div>
       <div className="player__section player__section--middle">
+        <div
+          className="progress"
+          onClick={scrub}
+          onMouseMove={seekTime}
+          onMouseEnter={() => {
+            setShowTooltip(true)
+          }}
+          onMouseLeave={() => {
+            setShowTooltip(false)
+          }}
+          ref={progressRef}
+        >
+          <div
+            className="progress__time"
+            style={{ width: `${progressTime}%` }}
+          />
+        </div>
         <h3 className="player__title">Playing: {title}</h3>
         <div
           className="player__tooltip"
-          //   style={{
-          //     left: `${tooltipPosition}px`,
-          //     opacity: `${showTooltip ? "1" : "0"}`,
-          //   }}
+          style={{
+            left: `${tooltipPosition}px`,
+            opacity: `${showTooltip ? "1" : "0"}`,
+          }}
         >
-          @TODO
+          {tooltipTime}
         </div>
       </div>
       <div className="player__section player__section--right">
         <button onClick={() => {}} className="player__speed" type="button">
-          <p>FASTNESS</p>
+          <p>SPEED</p>
           <span className="player__speeddisplay">@TODO &times;</span>
         </button>
         <div className="player__volume">
-          <p>LOUDNESS</p>
+          <p>VOLUME</p>
           <div className="player__inputs">
             {/* <VolumeBars volume={this.volume} /> */}
             @TODO
@@ -80,12 +120,12 @@ export default function Player({ audio }) {
       </div>
       <audio
         ref={audioRef}
-        onPlay={handlePlayPause}
-        onPause={handlePlayPause}
+        // onPlay={handlePlayPause}
+        // onPause={handlePlayPause}
         onTimeUpdate={updateTime}
         // onVolumeChange={this.volumeUpdate}
         onLoadedMetadata={groupedInitialUpdates}
-        src={audio.url}
+        src={url}
       />
     </div>
   )

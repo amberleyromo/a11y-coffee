@@ -195,7 +195,6 @@ p.player__icon {
 .progress__time {
   background: #c1dbdc;
   border-right: 1px solid rgba(0, 0, 0, 0.1);
-  min-width: 20px;
   height: 100%;
   transition: width 0.1s;
   background: linear-gradient(30deg, #b3bada 0%, #434f64 100%);
