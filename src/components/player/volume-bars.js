@@ -1,4 +1,6 @@
-import React, { Component, Fragment } from "react"
+/** @jsx jsx */
+import { jsx } from "theme-ui"
+import { Component, Fragment } from "react"
 
 // TODO Fix all eslint issues
 
@@ -15,6 +17,48 @@ const getItems = count => {
     }
   }) // END MAP
 } // END ARROW
+
+const srOnlyCss = {
+  border: `0 !important`,
+  clip: `rect(1px, 1px, 1px, 1px) !important`,
+  clipPath: `inset(50%) !important`,
+  height: `1px !important`,
+  overflow: `hidden !important`,
+  padding: `0 !important`,
+  position: `absolute !important`,
+  width: `1px !important`,
+  whiteSpace: `nowrap !important`,
+}
+
+const playerVolumeLabelCss = {
+  borderTop: `1px solid #ccc`,
+  background: `#f6dccd`,
+  borderRight: `2px solid #1d1d1d`,
+  display: `inline-block`,
+  width: `8px`,
+  height: `2.5rem`,
+
+  "&:hover": {
+    "& ~ label": {
+      borderTop: `1px solid #000`,
+    },
+  },
+}
+
+const playerVolumeInputCss = {
+  "&:checked": {
+    "& ~ label": {
+      background: "hotpink",
+      padding: `10rem`,
+    },
+  },
+  "&:checked": {
+    "& + label": {
+      background: `hotpink`,
+      padding: `10rem`,
+    },
+  },
+}
 
 class VolumeBars extends Component {
   state = {
@@ -59,6 +103,7 @@ class VolumeBars extends Component {
         {this.state.volumeBarList.map((item, index) => (
           <Fragment key={item.integer}>
             <input
+              sx={playerVolumeInputCss}
               onClick={() => {
                 this.handleOnClick(index)
               }}
@@ -67,9 +112,10 @@ class VolumeBars extends Component {
               name="volume"
               value={item.deci}
               id={item.vol}
-              className="sr-only"
+              sx={srOnlyCss}
             />
             <label
+              sx={playerVolumeLabelCss}
               htmlFor={item.vol}
               style={
                 item.checked
@@ -77,7 +123,7 @@ class VolumeBars extends Component {
                   : { background: "#e4e4e4" }
               }
             >
-              <span className="sr-only">{item.level}</span>
+              <span sx={srOnlyCss}>{item.level}</span>
             </label>
           </Fragment>
         ))}

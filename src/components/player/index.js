@@ -1,10 +1,14 @@
-import React, { useState, useEffect, useRef } from "react"
-import PropTypes from "prop-types"
+/** @jsx jsx */
+import { jsx } from "theme-ui"
+import { useState, useEffect, useRef } from "react"
 import { FaPlay, FaPause } from "react-icons/fa"
 import formatTime from "../../lib/format-time"
 import VolumeBars from "./volume-bars"
 
-import "./player.css"
+// import "./player.css"
+
+// useEffect is a no-op in SSR
+// https://github.com/gatsbyjs/gatsby/issues/13947#issuecomment-491214724
 
 export default function Player({ audio }) {
   const { url, title, slug } = audio
@@ -21,15 +25,19 @@ export default function Player({ audio }) {
   const [currentVolume, setCurrentVolume] = useState(1)
   const [playbackRate, setPlaybackRate] = useState(1)
 
+  useEffect(() => {
+    audioRef.current.playbackRate = playbackRate
+  }, [playbackRate])
+
+  /*
+   Helper methods
+   */
+
   const togglePlay = e => {
     const method = isPlaying ? "pause" : "play"
     audioRef.current[method]()
     setIsPlaying(!isPlaying)
   }
-
-  //   const handlePlayPause = () => {
-  //     setIsPlaying(!isPlaying)
-  //   }
 
   const updateTime = e => {
     const { currentTime = 0 } = e.currentTarget
@@ -110,27 +118,199 @@ export default function Player({ audio }) {
     updateVolume(e)
   }
 
-  useEffect(() => {
-    audioRef.current.playbackRate = playbackRate
-  }, [playbackRate])
+  /*
+   Styles
+   */
+
+  const playerCss = {
+    bottom: 0,
+    width: `100%`,
+    background: `#1d1d1d`,
+    border: 0,
+    // borderTop: `thin solid #434f64`,
+    color: `#fff`,
+    display: `flex`,
+    flexWrap: `wrap`,
+    position: `relative`,
+    position: `sticky`,
+    position: `-webkit-sticky`,
+    // boxShadow: ` 0 0.5px 0 0 #ffffff inset, 0 1px 2px 0 #b3b3b3`,
+    top: `-1px`,
+    zIndex: 2,
+  }
+
+  const playerSectionCss = {
+    order: 2,
+    fontSize: `1rem`,
+    p: {
+      margin: 0,
+    },
+  }
+
+  const playerSectionLeftCss = {
+    width: `140px`,
+    minWidth: `80px`,
+    "@media (max-width: 650px)": {
+      flex: 1,
+    },
+    "& > *": {
+      width: `100%`,
+    },
+  }
+
+  const playerSectionMiddleCss = {
+    position: `relative`,
+    flex: `1 1 auto`,
+    borderRight: `1px solid rgba(0, 0, 0, 0.6)`,
+    display: `flex`,
+    flexDirection: `column`,
+    "@media (max-width: 650px)": {
+      order: 1,
+      width: `100%`,
+    },
+  }
+
+  const playerSectionRightCss = {
+    display: `flex`,
+    "& > *": {
+      width: "100%",
+    },
+    "@media (max-width: 650px)": {
+      flex: 2,
+    },
+  }
+
+  const playerTitleCss = {
+    fontSize: `1rem`,
+    margin: 0,
+    flex: `1 0 auto`,
+    display: `flex`,
+    alignItems: `center`,
+    paddingLeft: `2rem`,
+    maxWidth: `450px`,
+    "@media (max-width: 650px)": {
+      padding: `1rem`,
+    },
+  }
+
+  const playerTooltipCss = {
+    position: `absolute`,
+    top: `34px`,
+    transform: `translate(-50%)`,
+    opacity: 0,
+    // might need another semicolon?
+    "&:after": {
+      content: " ",
+      position: `absolute`,
+      bottom: `94%`,
+      left: `50%`,
+      marginLeft: `-2px`,
+      borderWidth: `2px`,
+      borderStyle: `solid`,
+      borderColor: `transparent transparent #fff transparent`,
+    },
+  }
+
+  const playerButtonCss = {
+    background: `#1d1d1d`,
+    border: 0,
+    color: `#fff`,
+    padding: `1rem`,
+    height: `100%`,
+    borderRight: `1px solid rgba(0, 0, 0, 0.6)`,
+    outlineColor: `#f1c15d`,
+  }
+
+  const playerSpeedButtonCss = {
+    flex: `0 1 auto`,
+    // padding: `1rem`,
+    display: `flex`,
+    flexWrap: `wrap`,
+    justifyContent: `flex-start`,
+    flexDirection: `column`,
+    alignItems: `center`,
+    // "& > *": {
+    //   width: `100%`,
+    //   margin: 0,
+    // },
+  }
+
+  const playerParagraphCss = {
+    fontSize: `0.8rem`,
+  }
+
+  const playerVolumeCss = {
+    fontSize: `1rem`,
+    width: `120px`,
+    textAlign: `center`,
+    display: `flex`,
+    flexDirection: `column`,
+    justifyContent: `flex-start`,
+    alignItems: `center`,
+    padding: `1rem`,
+    flexWrap: `wrap`,
+    flex: `1 0 auto`,
+    "&:focus-within": {
+      outline: ` #ff0 auto 5px`,
+    },
+    // "&:hover": {
+    //   label: {
+    //     borderTop: `1px solid #ccc`,
+    //   },
+    // },
+  }
+
+  const playerProgressCss = {
+    background: `#0d0d0d`,
+    height: `2rem`,
+    cursor: `crosshair`,
+    overflow: `hidden`,
+  }
+
+  const playerProgressTimeCss = {
+    background: `#c1dbdc`,
+    borderRight: `1px solid rgba(0, 0, 0, 0.1)`,
+    height: `100%`,
+    transition: `width 0.1s`,
+    background: `linear-gradient(30deg, #b3bada 0%, #434f64 100%)`,
+  }
+
+  const playerSpeedDisplayCss = {
+    height: `2.5rem`,
+    display: `flex`,
+    justifyContent: `center`,
+    alignItems: `center`,
+    marginTop: `.8em`,
+  }
 
   return (
-    <div className="player">
-      <div className="player__section player__section--left">
+    <div className="player" sx={{ ...playerCss }}>
+      <div
+        className="player__section player__section--left"
+        sx={{ ...playerSectionCss, ...playerSectionLeftCss }}
+      >
         <button
+          className="player__button"
+          sx={playerButtonCss}
           onClick={togglePlay}
           aria-label={isPlaying ? "pause" : "play"}
           type="button"
         >
-          <p className="player__icon">{isPlaying ? <FaPause /> : <FaPlay />}</p>
-          <p>
+          <p sx={{ ...playerParagraphCss }}>
+            {isPlaying ? <FaPause /> : <FaPlay />}
+          </p>
+          <p sx={{ ...playerParagraphCss }}>
             {formatTime(currentTime)} / {formatTime(duration)}
           </p>
         </button>
       </div>
-      <div className="player__section player__section--middle">
+      <div
+        className="player__section player__section--middle"
+        sx={{ ...playerSectionCss, ...playerSectionMiddleCss }}
+      >
         <div
-          className="progress"
+          className="player__progress"
+          sx={playerProgressCss}
           onClick={scrub}
           onMouseMove={seekTime}
           onMouseEnter={() => {
@@ -142,14 +322,20 @@ export default function Player({ audio }) {
           ref={progressRef}
         >
           <div
-            className="progress__time"
-            style={{ width: `${progressTime}%` }}
+            className="player__progress--time"
+            sx={playerProgressTimeCss}
+            style={{
+              width: `${progressTime}%`,
+            }}
           />
         </div>
-        <h3 className="player__title">Playing: {title}</h3>
+        <h3 className="player__title" sx={playerTitleCss}>
+          Playing: {title}
+        </h3>
         <div
           className="player__tooltip"
-          style={{
+          sx={{
+            ...playerTooltipCss,
             left: `${tooltipPosition}px`,
             opacity: `${showTooltip ? "1" : "0"}`,
           }}
@@ -157,19 +343,23 @@ export default function Player({ audio }) {
           {tooltipTime}
         </div>
       </div>
-      <div className="player__section player__section--right">
+      <div
+        className="player__section player__section--right"
+        sx={{ ...playerSectionCss, ...playerSectionRightCss }}
+      >
         <button
+          className="player__button--speed"
+          sx={{ ...playerButtonCss, ...playerSpeedButtonCss }}
           onClick={increasePlaybackSpeed}
           onContextMenu={decreasePlaybackSpeed}
-          className="player__speed"
           type="button"
         >
-          <p>SPEED</p>
-          <span className="player__speeddisplay">{playbackRate} &times;</span>
+          <p sx={{ ...playerParagraphCss }}>SPEED</p>
+          <span sx={playerSpeedDisplayCss}>{playbackRate} &times;</span>
         </button>
-        <div className="player__volume">
-          <p>VOLUME</p>
-          <div className="player__inputs">
+        <div className="player__volume" sx={playerVolumeCss}>
+          <p sx={{ ...playerParagraphCss }}>VOLUME</p>
+          <div sx={{ fontSize: 0, marginTop: `.4em` }}>
             <VolumeBars onChange={manageVolumeBars} />
           </div>
         </div>
