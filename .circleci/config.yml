@@ -15,7 +15,7 @@ jobs:
           steps:
             - run: npm install
             - run: npm test
-            - run: npm run start & sleep 5; npm run test-pa11y
+            - run: npm run start & sleep 5; npm run test:pa11y
 workflows:
   build-and-test:
     jobs:
