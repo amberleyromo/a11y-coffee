@@ -14,7 +14,7 @@ jobs:
       - node/with-cache:
           steps:
             - run: npm install
-            - run: npm run start
+            - run: npm start &
             - run: npm test
             - run: npm run test:pa11y
 workflows:
