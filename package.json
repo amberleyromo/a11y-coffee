@@ -11,7 +11,7 @@
     "start": "npm run develop",
     "serve": "gatsby serve",
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing \"",
-    "test:pa11y": "./node_modules/.bin/pa11y-ci --config .pa11yci"
+    "test:pa11y-ci": "./node_modules/.bin/pa11y-ci --config .pa11yci"
   },
   "dependencies": {
     "@mdx-js/mdx": "^1.5.9",
@@ -27,7 +27,6 @@
     "gatsby-source-filesystem": "^2.1.21",
     "gatsby-theme-style-guide": "^0.3.1",
     "gatsby-transformer-remark": "^2.6.21",
-    "pa11y-ci": "^2.3.0",
     "prop-types": "^15.7.2",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
@@ -37,13 +36,20 @@
     "theme-ui": "^0.3.1"
   },
   "devDependencies": {
-    "prettier": "^1.18.2"
+    "prettier": "^1.18.2",
+    "husky": "^4.2.5",
+    "pa11y-ci": "^2.3.0"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "yarn test:pa11y-ci"
+    }
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/gatsbyjs/gatsby-starter-hello-world"
+    "url": "https://github.com/amberleyromo/a11y-coffee"
   },
   "bugs": {
-    "url": "https://github.com/gatsbyjs/gatsby/issues"
+    "url": "https://github.com/amberleyromo/a11y-coffee/issues"
   }
 }
