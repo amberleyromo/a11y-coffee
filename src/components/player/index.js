@@ -5,8 +5,6 @@ import { FaPlay, FaPause } from "react-icons/fa"
 import formatTime from "../../lib/format-time"
 import VolumeBars from "./volume-bars"
 
-// import "./player.css"
-
 // useEffect is a no-op in SSR
 // https://github.com/gatsbyjs/gatsby/issues/13947#issuecomment-491214724
 
@@ -348,7 +346,7 @@ export default function Player({ audio }) {
             }}
           />
         </div>
-        <h3 sx={playerTitleCss}>Playing: {title}</h3>
+        <h2 sx={playerTitleCss}>Playing: {title}</h2>
         <div
           role="tooltip"
           sx={{
