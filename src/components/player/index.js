@@ -5,33 +5,39 @@ import { FaPlay, FaPause } from "react-icons/fa"
 import formatTime from "../../lib/format-time"
 import VolumeBars from "./volume-bars"
 
+/*
+ * Note: This player is heavily modified from the Syntax FM player
+ * https://github.com/wesbos/Syntax/blob/master/components/Player.js
+ * Thank you, Wes and Scott
+ */
+
 // useEffect is a no-op in SSR
 // https://github.com/gatsbyjs/gatsby/issues/13947#issuecomment-491214724
 
+/*
+ * TODO:
+ * Remember user's previous volume and playback rate selections
+ */
+
 export default function Player({ audio }) {
-  // @TODO: use slug
-  // const { url, title, slug } = audio
   const { url, title } = audio
   const audioRef = useRef()
   const progressRef = useRef()
 
   const [isPlaying, setIsPlaying] = useState(false)
-  const [currentTime, setCurrentTime] = useState(0) // eventually read from localStorage
+  const [currentTime, setCurrentTime] = useState(0)
   const [duration, setDuration] = useState(null)
   const [tooltipPosition, setTooltipPosition] = useState(0)
   const [showTooltip, setShowTooltip] = useState(false)
   const [tooltipTime, setTooltipTime] = useState("0:00")
   const [progressTime, setProgressTime] = useState(0)
-  const [currentVolume, setCurrentVolume] = useState(1)
+  const [currentVolume, setCurrentVolume] = useState("1")
   const [playbackRate, setPlaybackRate] = useState(1)
 
   useEffect(() => {
     audioRef.current.volume = currentVolume
-  }, [currentVolume])
-
-  useEffect(() => {
     audioRef.current.playbackRate = playbackRate
-  }, [playbackRate])
+  }, [currentVolume, playbackRate])
 
   /*
    Helper methods
@@ -84,21 +90,6 @@ export default function Player({ audio }) {
     setCurrentVolume(`${e.currentTarget.value}`)
   }
 
-  // this pretty much only matters for initializing the
-  // user's previous volume pref, if exists
-  const updateVolume = e => {
-    // @TODO
-    //   const { timeWasLoaded } = this.state
-    //   // Check if the user already had a curent volume
-    //   if (timeWasLoaded) {
-    //     const lastVolume = localStorage.getItem(`lastVolumeSetting`)
-    //     if (lastVolume) {
-    //       e.currentTarget.volume = JSON.parse(lastVolume).lastVolumePref
-    //     }
-    //     this.setState({ timeWasLoaded: false })
-    //   }
-  }
-
   const updatePlaybackSpeed = change => {
     const playbackRateMax = 2.5
     const playbackRateMin = 0.75
@@ -128,7 +119,6 @@ export default function Player({ audio }) {
   const groupedInitialUpdates = e => {
     updateTime(e)
     updateDuration(e)
-    updateVolume(e)
   }
 
   const togglePlayOnSpace = e => {
@@ -375,13 +365,15 @@ export default function Player({ audio }) {
           </div>
         </div>
       </div>
+      {/* This audio is a media alternative for webpage text */}
+      {/* https://www.w3.org/WAI/WCAG21/Understanding/audio-only-and-video-only-prerecorded.html */}
       {/* eslint-disable-next-line jsx-a11y/media-has-caption */}
       <audio
         ref={audioRef}
         // onPlay={handlePlayPause}
         // onPause={handlePlayPause}
+        // onVolumeChange={updateVolume}
         onTimeUpdate={updateTime}
-        onVolumeChange={updateVolume}
         onLoadedMetadata={groupedInitialUpdates}
         src={url}
       />

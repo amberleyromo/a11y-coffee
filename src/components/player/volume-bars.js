@@ -2,7 +2,11 @@
 import { jsx } from "theme-ui"
 import { Component, Fragment } from "react"
 
-// TODO Fix all eslint issues
+/*
+ * Note: This player is heavily modified from the Syntax FM player
+ * https://github.com/wesbos/Syntax/blob/master/components/Player.js
+ * Thank you, Wes and Scott
+ */
 
 // data generator -> to create 10 volume bars
 const getItems = count => {
@@ -48,20 +52,6 @@ const playerVolumeLabelCss = {
 class VolumeBars extends Component {
   state = {
     volumeBarList: getItems(10),
-  }
-
-  componentDidMount() {
-    const localKey = `lastVolumeBarsOn`
-    const localStorageRef = localStorage.getItem(localKey)
-    if (localStorageRef) {
-      this.setState({ volumeBarList: JSON.parse(localStorageRef) })
-    }
-  }
-
-  componentDidUpdate(prevProps, prevState) {
-    const localKey = `lastVolumeBarsOn`
-    const localValue = JSON.stringify(this.state.volumeBarList)
-    localStorage.setItem(localKey, localValue)
   }
 
   //We are going to track which volume bars are "checked"
