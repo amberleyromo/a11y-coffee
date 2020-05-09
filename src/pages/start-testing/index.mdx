@@ -2,18 +2,27 @@
 title: Start Testing
 ---
 
-import { SEO, PreviousNextNav } from "../../"
+import { SEO, Player, PreviousNextNav } from "../../"
+import audio from "../../assets/a11y-coffee-start-testing.m4a"
 
 <SEO
   title="Start Testing for Web Accessibility"
-  description="An introduction to a variety of in-browser accessibility testing tools."
+  description="An introduction to a variety of accessibility testing tools."
 />
 
 # Start Testing for Web Accessibility
 
+<Player
+  audio={{
+    title: "Start Testing",
+    slug: "start-testing",
+    url: audio,
+  }}
+/>
+
 ## Summary
 
-A light introduction to a variety of in-browser testing tools. Run some audits over a mug of coffee (or whatever)! You will learn _a ton_ by learning about and addressing errors.
+A light introduction to a variety of accessibility testing tools. Run some audits over a mug of coffee (or whatever)! You will learn _a ton_ by running audits and addressing the resulting warnings and errors.
 
 > _You may find it useful to run audits with each tool as you read, to experiment with them. A great page to run tests on is "[Accessible University](https://www.washington.edu/accesscomputing/AU/before.html)", a fictional university homepage intentionally designed to show accessibility errors._
 
@@ -30,19 +39,19 @@ A light introduction to a variety of in-browser testing tools. Run some audits o
 
 ### Testing with Lighthouse
 
-You can run Lighthouse in the browser without installing anything, or from the command line:
+You can run Lighthouse in any browser without installing anything, in Chrome using the Chrome dev tools, or from the command line:
 
 - Run an audit from the browser at [web.dev/measure](https://web.dev/measure).
 - [Run Lighthouse in Chrome dev tools](https://developers.google.com/web/tools/lighthouse/#devtools).
 - [Run Lighthouse from the command line](https://developers.google.com/web/tools/lighthouse/#cli).
 
-> _There are other ways to run Lighthouse, but these options are the easiest to get started with._
+> _There are other ways to run Lighthouse, like incorporating it into your continuous integration workflow, but these options are the most straightforward to get started with. Check out [Google's landing page for the Lighthouse tool](https://developers.google.com/web/tools/lighthouse/) for more._
 
 ### Interpreting Lighthouse results
 
-The audit will return a score for four categories: Performance, accessibility, best practices, and SEO.
+Depending on how you run Lighthouse, there are several audit categories you may see. If you run from web.dev, you'll see results for performance, accessibility, best practices, and SEO. If you run it from dev tools or the command line, you have more flexibility, and can choose which audits to run.
 
-> _These scores are useful benchmarks, but can give a false impression. A score of 100 for accessibility means that automated testing found no errors. But automated testing doesn't catch everything. Still though, it's a great place to start!_
+> _These scores are useful benchmarks, but can give a false impression. A score of 100 for accessibility means that automated testing found no errors. But we know that automated testing doesn't catch everything. Still though, it's a great place to start!_
 
 The audit will also return a listing of flagged violations and warnings, sortable by "impact" ("high", "medium", "low"). You'll find the accessibility warnings under the "Accessibility" category.
 
@@ -88,14 +97,16 @@ There are just a few steps to testing with the Axe extension:
 
 1. Download the axe extension for Chrome or the axe extension for Firefox.
 2. Go to the page you want to test.
-3. Open up your browser’s developer tools menu. You can do this by right-clicking on the page and selecting “Inspect” or “Inspect Element.”
-4. Select the axe tab in the developer tools menu.
-   - In Firefox the tab is named “Accessibility” or “axe Accessibility Audit.”
+3. Open up your browser’s developer tools menu.
+   - In Chrome, right-click and select "Inspect".
+   - In Firefox, right-click and select "Inspect Element".
+   - In either browser, use the keyboard shortcut `Ctrl + Shift + C` on Windows, or `Cmd + Shift + C` on Mac.
+4. Select the `axe` tab in the developer tools menu.
 5. Hit the big “Analyze” button.
 
 ### Interpreting Axe results
 
-After analysis is complete, the Axe pane shows a list of accessibility issues it identified, as well as how many times the issue was found to occur on the page. Clicking an issue shows more detail, including:
+After analysis is complete, the Axe pane shows a list of accessibility issues it identified, as well as how many times the issue was found to occur on the page. Interacting with an issue shows more detail, including:
 
 - A description of the issue
 - A link to additional info on how to evaluate or address the issue
@@ -110,7 +121,7 @@ You can select "Inspect node" to inspect (in the "Elements" tab of your dev tool
 
 ### Testing with Accessibility Insights
 
-Accessibility Insights for Web supports two primary workflows: FastPass and Assessment.
+Accessibility Insights for Web supports three primary workflows: FastPass, Assessment, and Ad hoc tools.
 
 #### Accessibility Insights "FastPass"
 
@@ -125,6 +136,18 @@ The "Assessment" workflow assists in verifying that a web app or web site is com
 
 1. Automated checks: It automatically checks for compliance with approximately 50 accessibility requirements.
 2. Manual tests: It provides step-by-step instructions, examples, and how-to-fix guidance for approximately 20 tests, such as keyboard, focus, semantics, pointer / motion, and more. Many tests are "assisted", which means that the tool identifies the test instances or provides a visual helper.
+
+#### Accessibility Insights "Ad hoc tools"
+
+The "Ad hoc tools" workflow includes the two steps of the "Fast Pass" workflow -- automated checks and tab stops -- and adds three more:
+
+1. Color: The "Color" visualization shows the target page in grayscale, which assists in manually identifying instances where color is the only visible means of conveying meaning.
+2. Headings: The "Headings" visualization visually identifies the heading levels of programmatically-identified headings on a page. Because headings can be restyled, and the actual heading element level isn't identified visually, heading order can easily become disordered.
+3. Landmarks: The "Landmarks" visualization highlights landmarks on the page, empowering you to visually confirm the appropriate use of landmarks on the page.
+
+All of these tools are part of the "Assessment", but they can be really helpful tools to reach for outside of the context of a full assessment.
+
+Each of these ad hoc tools have supporting pages with more information and "dos and don'ts". You know need to know what you're looking for -- the tool will teach you what to look for!
 
 ## Read on
 

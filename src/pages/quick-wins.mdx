@@ -3,7 +3,8 @@ title: Quick Wins
 ---
 
 import { Flex } from "theme-ui"
-import { ColorContrast, ImageGallery, SEO, Callout, PreviousNextNav } from ".."
+import { Player, ColorContrast, ImageGallery, SEO, Callout, PreviousNextNav } from ".."
+import audio from "../assets/a11y-coffee-quick-wins.m4a"
 
 <SEO
   title="Quick Wins for Web Accessibility"
@@ -12,11 +13,19 @@ import { ColorContrast, ImageGallery, SEO, Callout, PreviousNextNav } from ".."
 
 # Quick wins for web accessibility
 
+<Player
+  audio={{
+    title: "Quick Wins",
+    slug: "quick-wins",
+    url: audio,
+  }}
+/>
+
 ## Summary
 
-In 2019, the [WebAIM project](https://webaim.org/) published an [accessibility evaluation of the home pages of the top 1,000,000 websites](https://webaim.org/projects/million/). The evaluation used an [automated testing tool called WAVE](https://wave.webaim.org/). The report found detectable WCAG 2 failures on 97.8% of tested home pages.
+The [WebAIM project](https://webaim.org/) publishes an [accessibility evaluation of the home pages of the top 1,000,000 websites](https://webaim.org/projects/million/), updated annually (twice so far). The evaluation uses an [automated testing tool called WAVE](https://wave.webaim.org/). The report from February 2020 found detectable WCAG 2 failures on 98.1% of tested home pages, increased from 97.8% found in February 2019.
 
-> _Automated testing can only detect around 25% of possible WCAG conformance failures.[^webaim-million] The absence of detectable errors does not necessarily mean that a site is accessible or compliant._
+> _Automated testing can only reliably detect a small portion of all possible WCAG conformance failures.[^webaim-million] This means that the actual conformance level is extraordinarily likely to be even lower._
 
 The topic and practice of web accessibility is wide-ranging and nuanced, which can make it feel hard to get started. A good place to start is to correct the most common errors identified in the study. This page will overview those most common errors.
 
@@ -27,18 +36,20 @@ The topic and practice of web accessibility is wide-ranging and nuanced, which c
   2. [Missing alt text for images](/quick-wins/#2-missing-alt-text-for-images)
   3. [Empty links](/quick-wins/#3-empty-links)
   4. [Missing form input labels](/quick-wins/#4-missing-form-input-labels)
-  5. [Missing document language](/quick-wins/#5-missing-document-language)
-  6. [Empty Buttons](/quick-wins/#6-empty-buttons)
+  5. [Empty Buttons](/quick-wins/#5-empty-buttons)
+  6. [Missing document language](/quick-wins/#6-missing-document-language)
 
 ## Most common web accessibility errors
 
 ### #1: Low contrast
 
+The WebAIM Million report found low contrast text on 86.3% of tested home pages in February 2020.
+
 Users must be able to _perceive_ content on the page. A sufficient contrast ratio supports that perception. Ensure that you're using sufficient color contrast.
 
 In WCAG, contrast is measured using "relative luminance". Relative luminance is the brightness between two colors.[^webaim-contrast] Relative luminance is expressed as a ratio ranging from 1:1 (white text on a white background) to 21:1 (black text on a white background).
 
-> _The first example shows black text on a white background. The second example shows white text on a white background, illustrating a contrast ratio of 1:1, which is completely imperceptible to anyone._
+> _The first of the following two examples shows black text on a white background. The second example shows white text on a white background, illustrating a contrast ratio of 1:1, which is completely imperceptible to anyone._
 
 <ImageGallery>
 
@@ -53,6 +64,8 @@ WCAG defines two levels of compliance for color contrast.
 #### Text
 
 [Regular text](https://www.w3.org/TR/WCAG21/#dfn-text) and [images of text](https://www.w3.org/TR/WCAG21/#dfn-images-of-text) must satisfy a [minimum contrast ratio 4.5:1](https://www.w3.org/TR/WCAG21/#contrast-minimum). The [enhanced minimum requirement is 7:1](https://www.w3.org/TR/WCAG21/#contrast-enhanced).
+
+> _The first of the following two examples shows medium gray text on a light gray background, with a contrast ratio of 4.6:1. The second example shows a darker gray for the text, with the same light gray background, with a contrast ratio of 7.19:1._
 
 <ImageGallery>
 
@@ -74,7 +87,9 @@ WCAG defines two levels of compliance for color contrast.
 
 #### Large text
 
-[Large-scale text](https://www.w3.org/TR/WCAG21/#dfn-large-scale) and images of large-scale text must meet a contrast ratio of at least 3:1. The enhanced minimum requirement is 4.5:1.
+[Large-scale text](https://www.w3.org/TR/WCAG21/#dfn-large-scale), or text of a size that's at least 18 point or 14 point bold, and images of large-scale text must meet a contrast ratio of at least 3:1. The enhanced minimum requirement is 4.5:1.
+
+> _Both of the following examples use a 24px font size. The first example shows medium gray text on a light gray background, with a contrast ratio of 3.08:1. The second example shows a darker gray for the text, with the same light gray background, with a contrast ratio of 4.6:1._
 
 <ImageGallery>
 
@@ -102,6 +117,8 @@ WCAG defines two levels of compliance for color contrast.
 
 ### #2: Missing alt text for images
 
+The WebAIM Million report found missing alt text for images on 66.3% of tested home pages in February 2020.
+
 Missing alt text for images is the second most common culprit. Ensure that you provide the `alt` attribute and a descriptive text value for each web image.
 
 ```html
@@ -127,6 +144,8 @@ With the alt attribute providing sufficient descriptive text, users can discern 
 
 ### #3: Empty links
 
+The WebAIM Million report found empty links on 59.9% of tested home pages in February 2020.
+
 If a link contains no text, the function or purpose of the link will be imperceptible to some users. This happens when an anchor element has an `href` attribute but contains no text, or a linked image has no alternative text.
 
 This example pulled from the Washington Post's homepage shows a common example:
@@ -147,29 +166,19 @@ That markup displays a social icon that links out to Twitter. However, it lacks 
 
 ### #4: Missing form input labels
 
+The WebAIM Million report found missing form input labels on 53.8% of tested home pages in February 2020.
+
 Missing form input labels can make it difficult or impossible for users to submit forms.
 
 #### Example with form input labels missing
 
-The following form example is modified from the University of Washington's ["Accessible University" fictional homepage](https://www.washington.edu/accesscomputing/AU/before.html). In this example, the text "Name" is near the intended input area. That relationship will be clear to most sighted users, but not so for others. If the proper markup is not present, screen readers must guess what text, if any, describes what field.
+In this example, the text "Name" is near the intended input area. That relationship will be clear to most sighted users, but not so for others. If the proper markup is not present, screen readers must guess what text, if any, describes what field.
 
 ```html
-<form action="#" method="post">
-
-    <div class="required">
-        Name:
-        <input type="text" name="name"/>
-    </div>
-
-    <div>
-        <input
-          id="submit"
-          type="submit"
-          name="submit"
-          value="Submit" />
-    </div>
-
-</form>
+<div>
+    Name:
+    <input type="text" name="name"/>
+</div>
 ```
 
 #### Fixed example with form input labels
@@ -177,28 +186,14 @@ The following form example is modified from the University of Washington's ["Acc
 To explicitly associate labels with form fields, labels must be marked up with the HTML `<label>` element. The `<label>` element takes a `for` attribute, whose value should match the `id` attribute of the associated form element.
 
 ```html
-<form action="after.html?submitted=yes" method="post">
-
-    <div class="required">
-        <label for="email">Email: (required)</label>
-        <input
-          id="email"
-          type="email"
-          name="email"
-          required
-        />
-    </div>
-
-    <div>
-        <input
-          id="submit"
-          type="submit"
-          name="submit"
-          value="Submit"
-        />
-    </div>
-
-</form>
+<div>
+    <label for="name">Name:</label>
+    <input
+      id="name"
+      type="text"
+      name="name"
+    />
+</div>
 ```
 
 <Callout>
@@ -207,7 +202,21 @@ To explicitly associate labels with form fields, labels must be marked up with t
 
 </Callout>
 
-### #5: Missing document language
+### #5: Empty buttons
+
+The WebAIM Million report found empty buttons on on 28.7% of tested home pages in February 2020.
+
+Users of assistive technology can have trouble discerning the purpose of a button that has no accessible name. Buttons must have discernible text that clearly describes the button's purpose, function, or action. There are many ways to accomplish this. Check out the [Deque `button-name` rule page](https://dequeuniversity.com/rules/axe/3.3/button-name).
+
+<Callout>
+
+**Solution:** Ensure [`<button>` elements have discernible text](https://dequeuniversity.com/rules/axe/3.3/button-name).
+
+</Callout>
+
+### #6: Missing document language
+
+The WebAIM Million report found the document language was missing on on 28.0% of tested home pages in February 2020.
 
 Screen reader users select a default language. If the language of a page is not specified, the screen reader will default to the user's selected default language. For multi-lingual users, this can result in strange behavior.
 
@@ -223,17 +232,7 @@ Ensure that you identify a language in the opening `<html>` element, using the `
 
 <Callout>
 
-**Solution:** Ensure [`<html>` element has a `lang` attribute](https://dequeuniversity.com/rules/axe/3.3/html-has-lang).
-
-</Callout>
-
-### #6: Empty buttons
-
-Users of assistive technology can have trouble discerning the purpose of a button that has no accessible name. Buttons must have discernible text that clearly describes the button's purpose, function, or action.
-
-<Callout>
-
-**Solution:** Ensure [`<button>` elements have discernible text](https://dequeuniversity.com/rules/axe/3.3/button-name).
+**Solution:** Ensure the [`<html>` element has a `lang` attribute](https://dequeuniversity.com/rules/axe/3.3/html-has-lang).
 
 </Callout>
 
