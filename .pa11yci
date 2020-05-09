@@ -1,6 +1,12 @@
 {
-	"urls": [
-		"http://localhost:8000/",
-		"http://localhost:8000/intro/"
-	]
+    "urls": [
+        "http://localhost:8000/",
+        "http://localhost:8000/intro",
+        "http://localhost:8000/quick-wins",
+        "http://localhost:8000/start-testing",
+        "http://localhost:8000/dig-in",
+        "http://localhost:8000/a11y-friday",
+        "http://localhost:8000/about",
+        "http://localhost:8000/credits"
+    ]
 }
