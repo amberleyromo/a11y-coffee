@@ -28,6 +28,10 @@ export default function Player({ audio }) {
   const [playbackRate, setPlaybackRate] = useState(1)
 
   useEffect(() => {
+    audioRef.current.volume = currentVolume
+  }, [currentVolume])
+
+  useEffect(() => {
     audioRef.current.playbackRate = playbackRate
   }, [playbackRate])
 
@@ -56,11 +60,20 @@ export default function Player({ audio }) {
     setDuration(duration)
   }
 
-  const scrubTime = e =>
-    (e.nativeEvent.offsetX / progressRef.current.offsetWidth) * duration
+  const scrubTime = e => {
+    return (e.nativeEvent.offsetX / progressRef.current.offsetWidth) * duration
+  }
 
   const scrub = e => {
     audioRef.current.currentTime = scrubTime(e)
+  }
+
+  const skipForward = (interval = 10) => {
+    audioRef.current.currentTime = audioRef.current.currentTime + interval
+  }
+
+  const skipBackward = (interval = 10) => {
+    audioRef.current.currentTime = audioRef.current.currentTime - interval
   }
 
   const seekTime = e => {
@@ -118,6 +131,31 @@ export default function Player({ audio }) {
     updateTime(e)
     updateDuration(e)
     updateVolume(e)
+  }
+
+  const togglePlayOnSpace = e => {
+    if (e.keyCode === 32) {
+      e.preventDefault()
+      togglePlay()
+    }
+  }
+
+  const handleProgressKeydown = e => {
+    // toggle play on spacebar
+    if (e.keyCode === 32) {
+      e.preventDefault()
+      togglePlay()
+    }
+
+    // on left arrow, scrub 10 seconds earlier
+    if (e.keyCode === 37) {
+      skipBackward()
+    }
+
+    // on right arrow, scrub 10 seconds later
+    if (e.keyCode === 39) {
+      skipForward()
+    }
   }
 
   /*
@@ -258,7 +296,6 @@ export default function Player({ audio }) {
     borderRight: `1px solid rgba(0, 0, 0, 0.1)`,
     height: `100%`,
     transition: `width 0.1s`,
-    // background: `#c1dbdc`,
     background: theme =>
       `linear-gradient(30deg, ${theme.colors.muted} 0%, ${theme.colors.darken} 100%)`,
   }
@@ -276,6 +313,7 @@ export default function Player({ audio }) {
         <button
           sx={playerButtonCss}
           onClick={togglePlay}
+          onKeyDown={togglePlayOnSpace}
           aria-label={isPlaying ? "pause" : "play"}
           type="button"
         >
@@ -290,6 +328,9 @@ export default function Player({ audio }) {
       <div sx={{ ...playerSectionCss, ...playerSectionMiddleCss }}>
         <div
           sx={playerProgressCss}
+          role="progressbar"
+          tabIndex="0"
+          onKeyDown={handleProgressKeydown}
           onClick={scrub}
           onMouseMove={seekTime}
           onMouseEnter={() => {
@@ -309,6 +350,7 @@ export default function Player({ audio }) {
         </div>
         <h3 sx={playerTitleCss}>Playing: {title}</h3>
         <div
+          role="tooltip"
           sx={{
             ...playerTooltipCss,
             left: `${tooltipPosition}px`,
@@ -335,6 +377,7 @@ export default function Player({ audio }) {
           </div>
         </div>
       </div>
+      {/* eslint-disable-next-line jsx-a11y/media-has-caption */}
       <audio
         ref={audioRef}
         // onPlay={handlePlayPause}
