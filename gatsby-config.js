@@ -42,5 +42,6 @@ module.exports = {
     },
     "gatsby-plugin-theme-ui",
     "gatsby-theme-style-guide",
+    "gatsby-plugin-react-helmet",
   ],
 }

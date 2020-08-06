@@ -79,7 +79,7 @@ function SEO({ location, description, lang, meta, keywords, title }) {
           content: seo.description,
         },
         {
-          property: `twitter:image`,
+          name: `twitter:image`,
           content: seo.image,
         },
       ]
