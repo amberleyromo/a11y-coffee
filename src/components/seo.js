@@ -35,8 +35,6 @@ function SEO({ description, lang, meta, title }) {
     image: `${siteUrl}${defaultImage}`,
   }
 
-  console.log(seo.image)
-
   return (
     <Helmet
       htmlAttributes={{
