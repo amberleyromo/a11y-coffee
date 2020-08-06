@@ -9,7 +9,7 @@ function SEO({ location, description, lang, meta, keywords, title }) {
       query {
         site {
           siteMetadata {
-            defaultTitle: title
+            siteTitle: title
             defaultDescription: description
             author
             defaultImage: image
@@ -21,7 +21,7 @@ function SEO({ location, description, lang, meta, keywords, title }) {
   )
 
   const {
-    defaultTitle,
+    siteTitle,
     defaultDescription,
     author,
     defaultImage,
@@ -29,7 +29,7 @@ function SEO({ location, description, lang, meta, keywords, title }) {
   } = site.siteMetadata
 
   const seo = {
-    title: title || defaultTitle,
+    title: title || siteTitle,
     description: description || defaultDescription,
     image: `${siteUrl}${defaultImage}`,
   }
@@ -40,7 +40,7 @@ function SEO({ location, description, lang, meta, keywords, title }) {
         lang,
       }}
       title={seo.title}
-      titleTemplate={`%s | ${seo.title}`}
+      titleTemplate={`%s | ${siteTitle}`}
       meta={[
         {
           name: `description`,

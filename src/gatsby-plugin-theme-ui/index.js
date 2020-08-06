@@ -147,6 +147,7 @@ export default {
     },
     pre: {
       // fontFamily: "monospace",
+      overflow: "scroll",
       fontSize: 1,
       p: 3,
       // color: "text",
