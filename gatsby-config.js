@@ -4,6 +4,7 @@ module.exports = {
     description: `The introduction on web accessibility that I want to give every single web developer.`,
     author: `@amber1ey`,
     image: "/a11y-coffee.png",
+    siteUrl: "https://a11y.coffee/",
   },
   plugins: [
     "gatsby-plugin-sharp",

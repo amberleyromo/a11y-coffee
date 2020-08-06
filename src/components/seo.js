@@ -9,17 +9,33 @@ function SEO({ description, lang, meta, title }) {
       query {
         site {
           siteMetadata {
-            title
-            description
+            defaultTitle: title
+            defaultDescription: description
             author
-            image
+            defaultImage: image
+            siteUrl
           }
         }
       }
     `
   )
 
-  const metaDescription = description || site.siteMetadata.description
+  const {
+    defaultTitle,
+    defaultDescription,
+    author,
+    defaultImage,
+    siteUrl,
+  } = site.siteMetadata
+
+  const seo = {
+    title: title || defaultTitle,
+    description: description || defaultDescription,
+    author,
+    image: `${siteUrl}${defaultImage}`,
+  }
+
+  console.log(seo.image)
 
   return (
     <Helmet
@@ -27,23 +43,23 @@ function SEO({ description, lang, meta, title }) {
         lang,
       }}
       title={title}
-      titleTemplate={`%s | ${site.siteMetadata.title}`}
+      titleTemplate={`%s | ${seo.title}`}
       meta={[
         {
           name: `description`,
-          content: metaDescription,
+          content: seo.description,
         },
         {
           property: `og:title`,
-          content: title,
+          content: seo.title,
         },
         {
           property: `og:description`,
-          content: metaDescription,
+          content: seo.description,
         },
         {
           property: `og:image`,
-          content: site.siteMetadata.image,
+          content: seo.image,
         },
         {
           property: `og:type`,
@@ -55,19 +71,19 @@ function SEO({ description, lang, meta, title }) {
         },
         {
           name: `twitter:creator`,
-          content: site.siteMetadata.author,
+          content: seo.author,
         },
         {
           name: `twitter:title`,
-          content: title,
+          content: seo.title,
         },
         {
           name: `twitter:description`,
-          content: metaDescription,
+          content: seo.description,
         },
         {
           property: `twitter:image`,
-          content: site.siteMetadata.image,
+          content: seo.image,
         },
       ].concat(meta)}
     />
