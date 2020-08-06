@@ -19,6 +19,7 @@
     "@theme-ui/prism": "^0.3.0",
     "gatsby": "^2.20.36",
     "gatsby-plugin-mdx": "^1.1.11",
+    "gatsby-plugin-react-helmet": "^3.3.10",
     "gatsby-plugin-sharp": "^2.2.19",
     "gatsby-plugin-theme-ui": "^0.3.0",
     "gatsby-remark-a11y-emoji": "^1.0.1",
@@ -36,9 +37,9 @@
     "theme-ui": "^0.3.1"
   },
   "devDependencies": {
-    "prettier": "^1.18.2",
     "husky": "^4.2.5",
-    "pa11y-ci": "^2.3.0"
+    "pa11y-ci": "^2.3.0",
+    "prettier": "^1.18.2"
   },
   "husky": {
     "hooks": {
