@@ -6,7 +6,7 @@ import Button from "./button"
 
 const modes = ["default", "dark"]
 
-export default () => {
+export default ({ fullWidth }) => {
   const [mode, setMode] = useColorMode()
 
   const cycleMode = e => {
@@ -14,6 +14,8 @@ export default () => {
     const next = modes[(i + 1) % modes.length]
     setMode(next)
   }
+
+  console.log({ fullWidth })
 
   return (
     <Box
@@ -26,7 +28,7 @@ export default () => {
       <Flex
         sx={{
           justifyContent: "space-between",
-          maxWidth: 1024,
+          maxWidth: fullWidth ? 1024 : 800,
           m: `auto`,
           py: 2,
           px: 3,

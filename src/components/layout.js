@@ -29,7 +29,12 @@ export default props => {
         }}
       />
       <Box>
-        <Header nav={nav} menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
+        <Header
+          nav={nav}
+          menuOpen={menuOpen}
+          setMenuOpen={setMenuOpen}
+          {...props}
+        />
         <Main {...props} />
         <Footer />
       </Box>
