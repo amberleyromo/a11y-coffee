@@ -15,5 +15,6 @@ export default () => (
     <NavLink to="/about/">About</NavLink>
     <NavLink href="/credits/">Credits</NavLink>
     <NavLink href="https://github.com/amberleyromo/a11y-coffee">GitHub</NavLink>
+    <NavLink href="https://ko-fi.com/amberley">Buy Me a Coffee</NavLink>
   </Flex>
 )
