@@ -27,7 +27,7 @@
     "gatsby-remark-numbered-footnotes": "^1.0.1",
     "gatsby-source-filesystem": "^2.1.21",
     "gatsby-theme-style-guide": "^0.3.1",
-    "gatsby-transformer-remark": "^2.6.21",
+    "gatsby-transformer-remark": "^5.25.1",
     "prop-types": "^15.7.2",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
